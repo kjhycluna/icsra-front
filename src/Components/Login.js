@@ -2,32 +2,33 @@ import React, { Component } from 'react';
 import {Row, Input, Button} from 'react-materialize';
 import './Login.css';
 
-// const autoBind = require('auto-bind');
+const autoBind = require('auto-bind');
 
 class Login extends Component {
-	/*constructor(props){
+	constructor(props){
 		super(props)
 		this.state = {
 			email:"",
 			password:""
 		}
 		autoBind(this);
-		this.updateEmail = this.updateEmail.bind(this);
-		this.updatePassword = this.updatePassword.bind(this);
+		/*this.updateEmail = this.updateEmail.bind(this);
+		this.updatePassword = this.updatePassword.bind(this);*/
 		this.handleSubmit = this.handleSubmit.bind(this);
-	}*/
+	}
 
-	updateEmail(event){
-	this.setState({email : event.target.value})
+	/*updateEmail(event){
+		this.setState({email : event.target.value})
 	}
 
 	updatePassword(event){
-	this.setState({password : event.target.value})
-	}
+		this.setState({password : event.target.value})
+	}*/
 
-	handleSubmit(){
-		console.log('Your input value is: ' + this.state.username);
-		// window.location = '/HomeProfile'; //should go to /home
+	handleSubmit(event){
+		this.setState({email : event.target.value})
+		this.setState({password : event.target.value})
+		window.location = '/home';	//should have authentication before this
 	}
 
 	render() {
@@ -46,7 +47,7 @@ class Login extends Component {
 
 					<div className="center">
 
-						<Button waves='light' node='a' href='/home'>
+						<Button waves='light' onClick={this.handleSubmit}>
 							LOGIN
 						</Button>
 					</div>

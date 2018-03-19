@@ -26,13 +26,12 @@ hr {
 	top: 50px;
 	width: 80%;
 	min-height: 1000px;
-	/*background-color: #DDEDFF;*/
 }
 
 .tableFeed {
 	position: relative;
 	top: 102px;
-	float: right;
+	/*float: right;*/
 	width: 70%;
 	padding-left: 30px;
 	padding-right: 30px;
@@ -40,7 +39,7 @@ hr {
 	/*background-color: #EEEEFF;*/
 }
 
-.sideBar {
+.side {
 	position: relative;
 	top: 102px;
 	float: left;

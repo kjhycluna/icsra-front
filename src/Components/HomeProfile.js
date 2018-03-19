@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Dropdown, NavItem, Icon, Button, Table, MediaBox} from 'react-materialize';
 import './HomeProfile.css';
 import TopNav from './TopNav';
+import ChangePassword from './ChangePassword';
 
 // const autoBind = require('auto-bind');
 
@@ -26,15 +27,15 @@ class HomeProfile extends Component {
 					</div>
 					<div className="settingsBtn">
 						<Dropdown trigger={<Button><Icon>settings</Icon></Button>}>
-							<NavItem>Edit Profile</NavItem>
-							<NavItem>Change Password</NavItem>
+							<NavItem node='a' href='/edit-profile'>EditProfile</NavItem>
+							<ChangePassword/>
 						</Dropdown>
 					</div>
 				</div>
 				
 				<hr></hr>
 
-				<div className="sideBar">
+				<div className="side">
 					<div className="profilePicture">
 						<MediaBox src="https://static.useresponse.com/public/2026agenda/avatars/default-avatar.svg" caption="A demo media box1" width="80%"/>
 					</div>

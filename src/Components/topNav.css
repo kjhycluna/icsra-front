@@ -7,6 +7,15 @@
 	z-index: 1;
 }
 
+#sidenav-overlay {
+	z-index: 1;
+	margin-left: 300px;
+}
+
+.navbar-fixed {
+	z-index: 999;
+}
+
 .topnavText {
 	position: relative;
 	text-align: center;

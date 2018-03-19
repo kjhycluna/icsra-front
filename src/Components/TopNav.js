@@ -11,11 +11,11 @@ class TopNav extends Component {
 				  trigger={<Button flat large floating><Icon>menu</Icon></Button>}
 				  options={{ closeOnClick: true }}
 				  >
-				  <SideNavItem header>ICSRA</SideNavItem>
-				  <SideNavItem waves href='#!first'>Home</SideNavItem>
-				  <SideNavItem waves href='#!second'>Course Offerings</SideNavItem>
-				  <SideNavItem waves href='#!third'>Adviser-Advisee Assignments</SideNavItem>
-				  <SideNavItem waves href='#!third'>Schedules</SideNavItem>
+				  <SideNavItem subheader>ICSRA</SideNavItem>
+				  <SideNavItem waves href='/home'>Home</SideNavItem>
+				  <SideNavItem waves href='/list-courses'>Course Offerings</SideNavItem>
+				  <SideNavItem waves href='/adviser-advisee'>Adviser-Advisee Assignments</SideNavItem>
+				  <SideNavItem waves href='/list-sched'>Schedules</SideNavItem>
 				  <SideNavItem divider/>
 				  <SideNavItem waves href='#!third'>Third Link With Waves</SideNavItem>
 				  <SideNavItem waves href='#!third'>Third Link With Waves</SideNavItem>
@@ -32,3 +32,4 @@ class TopNav extends Component {
 }
 
 export default TopNav;
+// <p style="color:green"><a href="/home">ICSRA</a></p>
