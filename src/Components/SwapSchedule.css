@@ -1,0 +1,24 @@
+.swapPageTitle {
+	position: absolute;
+	float: left;
+	left: -5px;
+	text-align: left;
+	letter-spacing: 4px;
+	font-size: 64px;
+	font-weight: bold;
+}
+
+.swapSchedule {
+	position: relative;
+	margin: auto;
+	top: 50px;
+	width: 80%;
+	min-height: 1000px;
+}
+
+.swapScheduleList {
+	position: relative;
+	margin: auto;
+	padding-top: 10%;
+	width: 80%;
+}

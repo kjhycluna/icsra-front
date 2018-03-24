@@ -1,0 +1,27 @@
+.topnav {
+	position: fixed;
+	top: 0px;
+	height: 57px;
+	width: 100%;
+	background-color: #66CDAA;
+	z-index: 1;
+}
+
+#sidenav-overlay {
+	z-index: 1;
+	margin-left: 300px;
+}
+
+.navbar-fixed {
+	z-index: 999;
+}
+
+.topnavText {
+	position: relative;
+	text-align: center;
+	top: -50px;
+	letter-spacing: 4px;
+	font-size: 32px;
+	font-weight: bold;
+	color: white;
+}
