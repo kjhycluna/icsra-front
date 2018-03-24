@@ -1,0 +1,36 @@
+.listaa {
+	position: absolute;
+	margin: left;
+	left: 2.5%;
+	top: 80px;
+	width: 60%;
+	min-height: 1000px;
+	/*background-color: #DDEDFF;*/
+}
+
+.sideStudent {
+	position: fixed;
+	top: 80px;
+	right: 2.5%;
+	width: 30%;
+	min-height: 100%;
+	/*background-color: #EEEEFF;*/
+}
+
+td {
+	border-style: solid;
+	text-align: center;
+	font-size: 15px;
+	font-family: Arial;
+	white-space: pre;
+}
+
+
+.classification {
+	font-family: Times New Roman;
+	font-size: 25px;
+}
+
+.advisers {
+	font-size: 18px;
+}

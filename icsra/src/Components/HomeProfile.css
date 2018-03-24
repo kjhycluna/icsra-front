@@ -1,0 +1,61 @@
+.name {
+	position: absolute;
+	float: left;
+	left: -5px;
+	text-align: left;
+	letter-spacing: 4px;
+	font-size: 64px;
+	font-weight: bold;
+}
+
+.settingsBtn {
+	position: absolute;
+	float: right;
+	top: 35px;
+	right: 0px;
+}
+
+hr {
+	position: relative;
+	top: 90px;
+}
+
+.feed {
+	position: relative;
+	margin: auto;
+	top: 50px;
+	width: 80%;
+	min-height: 1000px;
+}
+
+.tableFeed {
+	position: relative;
+	top: 102px;
+	/*float: right;*/
+	width: 70%;
+	padding-left: 30px;
+	padding-right: 30px;
+	min-height: 100%;
+	/*background-color: #EEEEFF;*/
+}
+
+.side {
+	position: relative;
+	top: 102px;
+	float: left;
+	width: 30%;
+	min-height: 100%;
+	/*background-color: #EEEEFF;*/
+}
+
+.profilePicture {
+	position: relative;
+	left: 10%;
+}
+
+.add {
+	position: relative;
+	float: right;
+	padding: 20px;
+	z-index: 0;
+}

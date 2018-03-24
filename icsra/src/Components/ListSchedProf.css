@@ -1,0 +1,40 @@
+
+.feed {
+	position: relative;
+	margin: auto;
+	top: 50px;
+	width: 80%;
+	min-height: 1000px;
+	/*background-color: #DDEDFF;*/
+}
+
+.tableFeed {
+	position: relative;
+	top: 102px;
+	float: right;
+	width: 70%;
+	padding-left: 30px;
+	padding-right: 30px;
+	min-height: 100%;
+	/*background-color: #EEEEFF;*/
+}
+
+.profName {
+	position: absolute;
+	float: left;
+	left: -5px;
+	text-align: left;
+	letter-spacing: 4px;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.teachLoad {
+	position: absolute;
+	float: right;
+	right: -5px;
+	text-align: left;
+	letter-spacing: 4px;
+	font-size: 28px;
+	font-weight: bold;
+}
