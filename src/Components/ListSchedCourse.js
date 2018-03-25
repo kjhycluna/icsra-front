@@ -1,9 +1,9 @@
 import React, { Component } from 'react';					//default
-import { Table } from 'react-materialize';	//use react-materialize.github.io
+import { Table, Button, Icon } from 'react-materialize';	//use react-materialize.github.io
 import './ListCourses.css';								//css file of your component
 import TopNav from './TopNav';								//default
 
-class ListCourses extends Component {
+class ListSchedCourse extends Component {
 	render() {
 		return (
 			<div>
@@ -20,7 +20,8 @@ class ListCourses extends Component {
 						      <th data-field="sec">Section</th>
 						      <th data-field="dayTime">Day/Time</th>
 						      <th data-field="inst">Instructor</th>
-						      <th data-field="studentCount">No. of Students</th>
+						      <th data-field="edit">Edit</th>
+						      <th data-field="delete">Delete</th>
 						    </tr>
 						  </thead>
 
@@ -30,7 +31,12 @@ class ListCourses extends Component {
 						      <td>A1L</td>
 						      <td>Mon/16:00-19:00</td>
 						      <td>Hopper, Grace</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						    
 						    <tr>
@@ -38,7 +44,12 @@ class ListCourses extends Component {
 						      <td>A2L</td>
 						      <td>Tue/16:00-19:00</td>
 						      <td>Turing, Alan</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						  
 						    <tr>
@@ -46,7 +57,12 @@ class ListCourses extends Component {
 						      <td>A3L</td>
 						      <td>Wed/10:00-13:00</td>
 						      <td>Dijkstra, Edsger</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						    
 						    <tr>
@@ -54,7 +70,12 @@ class ListCourses extends Component {
 						      <td>A4L</td>
 						      <td>Wed/13:00-16:00</td>
 						      <td>Hopper, Grace</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						    
 						    <tr>
@@ -62,7 +83,12 @@ class ListCourses extends Component {
 						      <td>A5L</td>
 						      <td>Thu/10:00-13:00</td>
 						      <td>Turing, Alan</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						  
 						    <tr>
@@ -70,7 +96,12 @@ class ListCourses extends Component {
 						      <td>A6L</td>
 						      <td>Fri/16:00-19:00</td>
 						      <td>Dijkstra, Edsger</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						  </tbody>
 						</Table>
@@ -85,7 +116,8 @@ class ListCourses extends Component {
 						      <th data-field="sec">Section</th>
 						      <th data-field="dayTime">Day/Time</th>
 						      <th data-field="inst">Instructor</th>
-						      <th data-field="studentCount">No. of Students</th>
+						      <th data-field="edit">Edit</th>
+						      <th data-field="delete">Delete</th>
 						    </tr>
 						  </thead>
 
@@ -95,7 +127,12 @@ class ListCourses extends Component {
 						      <td>A1L</td>
 						      <td>Mon/16:00-19:00</td>
 						      <td>Hopper, Grace</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						    
 						    <tr>
@@ -103,7 +140,12 @@ class ListCourses extends Component {
 						      <td>A2L</td>
 						      <td>Tue/16:00-19:00</td>
 						      <td>Turing, Alan</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						  
 						    <tr>
@@ -111,7 +153,12 @@ class ListCourses extends Component {
 						      <td>A3L</td>
 						      <td>Wed/10:00-13:00</td>
 						      <td>Dijkstra, Edsger</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						    
 						    <tr>
@@ -119,7 +166,12 @@ class ListCourses extends Component {
 						      <td>A4L</td>
 						      <td>Wed/13:00-16:00</td>
 						      <td>Hopper, Grace</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						    
 						    <tr>
@@ -127,7 +179,12 @@ class ListCourses extends Component {
 						      <td>A5L</td>
 						      <td>Thu/10:00-13:00</td>
 						      <td>Turing, Alan</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						  
 						    <tr>
@@ -135,7 +192,12 @@ class ListCourses extends Component {
 						      <td>A6L</td>
 						      <td>Fri/16:00-19:00</td>
 						      <td>Dijkstra, Edsger</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						  </tbody>
 						</Table>
@@ -150,7 +212,8 @@ class ListCourses extends Component {
 						      <th data-field="sec">Section</th>
 						      <th data-field="dayTime">Day/Time</th>
 						      <th data-field="inst">Instructor</th>
-						      <th data-field="studentCount">No. of Students</th>
+						      <th data-field="edit">Edit</th>
+						      <th data-field="delete">Delete</th>
 						    </tr>
 						  </thead>
 
@@ -160,7 +223,12 @@ class ListCourses extends Component {
 						      <td>A1L</td>
 						      <td>Mon/16:00-19:00</td>
 						      <td>Hopper, Grace</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						    
 						    <tr>
@@ -168,7 +236,12 @@ class ListCourses extends Component {
 						      <td>A2L</td>
 						      <td>Tue/16:00-19:00</td>
 						      <td>Turing, Alan</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						  
 						    <tr>
@@ -176,7 +249,12 @@ class ListCourses extends Component {
 						      <td>A3L</td>
 						      <td>Wed/10:00-13:00</td>
 						      <td>Dijkstra, Edsger</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						    
 						    <tr>
@@ -184,7 +262,12 @@ class ListCourses extends Component {
 						      <td>A4L</td>
 						      <td>Wed/13:00-16:00</td>
 						      <td>Hopper, Grace</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						    
 						    <tr>
@@ -192,7 +275,12 @@ class ListCourses extends Component {
 						      <td>A5L</td>
 						      <td>Thu/10:00-13:00</td>
 						      <td>Turing, Alan</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						  
 						    <tr>
@@ -200,7 +288,12 @@ class ListCourses extends Component {
 						      <td>A6L</td>
 						      <td>Fri/16:00-19:00</td>
 						      <td>Dijkstra, Edsger</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						  </tbody>
 						</Table>
@@ -215,7 +308,8 @@ class ListCourses extends Component {
 						      <th data-field="sec">Section</th>
 						      <th data-field="dayTime">Day/Time</th>
 						      <th data-field="inst">Instructor</th>
-						      <th data-field="studentCount">No. of Students</th>
+						      <th data-field="edit">Edit</th>
+						      <th data-field="delete">Delete</th>
 						    </tr>
 						  </thead>
 
@@ -225,7 +319,12 @@ class ListCourses extends Component {
 						      <td>A1L</td>
 						      <td>Mon/16:00-19:00</td>
 						      <td>Hopper, Grace</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						    
 						    <tr>
@@ -233,7 +332,12 @@ class ListCourses extends Component {
 						      <td>A2L</td>
 						      <td>Tue/16:00-19:00</td>
 						      <td>Turing, Alan</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						  
 						    <tr>
@@ -241,7 +345,12 @@ class ListCourses extends Component {
 						      <td>A3L</td>
 						      <td>Wed/10:00-13:00</td>
 						      <td>Dijkstra, Edsger</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						    
 						    <tr>
@@ -249,7 +358,12 @@ class ListCourses extends Component {
 						      <td>A4L</td>
 						      <td>Wed/13:00-16:00</td>
 						      <td>Hopper, Grace</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						    
 						    <tr>
@@ -257,7 +371,12 @@ class ListCourses extends Component {
 						      <td>A5L</td>
 						      <td>Thu/10:00-13:00</td>
 						      <td>Turing, Alan</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						  
 						    <tr>
@@ -265,7 +384,12 @@ class ListCourses extends Component {
 						      <td>A6L</td>
 						      <td>Fri/16:00-19:00</td>
 						      <td>Dijkstra, Edsger</td>
-						      <td>20</td>
+						      <td>
+						        <Button waves='light'><Icon center>edit</Icon></Button>
+						      </td>
+						      <td>
+						        <Button waves='light'><Icon center>delete</Icon></Button>
+						      </td>
 						    </tr>
 						  </tbody>
 						</Table>
@@ -277,4 +401,4 @@ class ListCourses extends Component {
 	}
 }
 
-export default ListCourses;
+export default ListSchedCourse;

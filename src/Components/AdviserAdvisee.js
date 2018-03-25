@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import {Table} from 'react-materialize';
+import {Table, Button} from 'react-materialize';
 import './AdviserAdvisee.css';
 import TopNav from './TopNav';
 import {assignment} from './adviser-advisee.js'; //the adviser-advisee data (array of objects with adviser and advisee[] attributes)
+import AdvAssignmentCreate from './AdvAssignmentCreate';
 
 // const autoBind = require('auto-bind');
 
@@ -15,6 +16,7 @@ class AdviserAdvisee extends Component {
 			advisee: "",
 			studno: "20XX-XXXXX",
 			email: "student@up.edu.ph",
+			units: 0,
 			adviser: "",
 			prev_adv: []
 		}
@@ -32,13 +34,13 @@ class AdviserAdvisee extends Component {
 	createTable(){ //function that creates tables of adviser - # of advisees - advisees[], if the adviser has no current advisees, he/she is not included
 		var table = [];
 		for(var i=0; i<assignment.length; i++){
-			if(assignment[i].advisees.length > 0){
+			// if(assignment[i].advisees.length > 0){
 				table.push(<tr> 
 					<td className="advisers">{assignment[i].adviser}</td>
 					<td className="advisers">{assignment[i].advisees.length}</td>
-					<td>{this.createAdvisees(assignment[i])}</td>
+					<td className="tdStyle">{this.createAdvisees(assignment[i])}</td>
 					</tr>);
-			}
+			// }
 		}
 		return table;
 	}
@@ -76,27 +78,35 @@ class AdviserAdvisee extends Component {
             	<Table>
             		<tbody>
             			<tr>
-            				<td> Name </td>
-            				<td> {this.state.advisee} </td>
+            				<td className="tdStyle"> Name </td>
+            				<td className="tdStyle"> {this.state.advisee} </td>
             			</tr>
             			<tr>
-            				<td> Student Number </td>
-            				<td> {this.state.studno} </td>
+            				<td className="tdStyle"> Student Number </td>
+            				<td className="tdStyle"> {this.state.studno} </td>
             			</tr>
             			<tr>
-            				<td> Email </td>
-            				<td> {this.state.email} </td>
+            				<td className="tdStyle"> Email </td>
+            				<td className="tdStyle"> {this.state.email} </td>
             			</tr>
             			<tr>
-            				<td> Adviser </td>
-            				<td> {this.state.adviser} </td>
+            				<td className="tdStyle"> Units Earned </td>
+            				<td className="tdStyle"> {this.state.units} </td>
             			</tr>
             			<tr>
-            				<td> Previous Advisers </td>
+            				<td className="tdStyle"> Adviser </td>
+            				<td className="tdStyle"> {this.state.adviser} </td>
+            			</tr>
+            			<tr>
+            				<td className="tdStyle"> Previous Advisers </td>
             				<td> {this.previousAdvisers()} </td>
             			</tr>
             		</tbody>
             	</Table>
+            	<br /><br /><br />
+				<AdvAssignmentCreate/><br />
+				<Button waves='light'>Update a Student's Adviser</Button><br /><br />
+				<Button waves='light'>Delete a Student's Adviser</Button><br /><br />
             </div>
 
 		</div>

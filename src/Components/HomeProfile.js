@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import {Dropdown, NavItem, Icon, Button, Table, MediaBox} from 'react-materialize';
+import {Dropdown, NavItem, Icon, Button, Table, MediaBox, CollapsibleItem, Collapsible} from 'react-materialize';
 import './HomeProfile.css';
 import TopNav from './TopNav';
 import ChangePassword from './ChangePassword';
+import AddConsultationHours from './AddConsultationHours';
 
 // const autoBind = require('auto-bind');
 
@@ -41,7 +42,7 @@ class HomeProfile extends Component {
 					</div>
 					<br />
 					<div>
-						<Table>
+						<Table bordered="false">
 						  <tbody>
 						    <tr>
 						      <td>Employee No.:</td>
@@ -62,18 +63,6 @@ class HomeProfile extends Component {
 						    <tr>
 						      <td>Study Load:</td>
 						      <td>%d</td>
-						    </tr>
-						    <tr>
-						      <td>Preferred Subjects:</td>
-						      <td>1. </td>
-						    </tr>
-						    <tr>
-						      <td></td>
-						      <td>2. </td>
-						    </tr>
-						    <tr>
-						      <td></td>
-						      <td>3. </td>
 						    </tr>
 						  </tbody>
 						</Table>
@@ -115,39 +104,112 @@ class HomeProfile extends Component {
 					</Table>
 
 					<div className="add">
-						<Button waves='light'>Add Consultation Hours</Button>
+						<AddConsultationHours/>
 					</div>
 
-					<br />
-					<br />
+					<br /> <br /> <br />
 					ADVISEES
-					<Table striped="true">
-					  <thead>
-					    <tr>
-					      <th data-field="name">Name</th>
-					      <th data-field="col2">asdf</th>
-					      <th data-field="col3">asdf</th>
-					    </tr>
-					  </thead>
+					<Collapsible accordion>
+					  <CollapsibleItem header='SP Advisees' icon='person'>
+					    <Table striped="true">
+					      <thead>
+					        <tr>
+					          <th data-field="name">Name</th>
+					          <th data-field="studentNo">Student Number</th>
+					          <th data-field="status">Status</th>
+					          <th data-field="unitsEarned">Units Earned</th>
+					        </tr>
+					      </thead>
 
-					  <tbody>
-					    <tr>
-					      <td>Alvin</td>
-					      <td>Eclair</td>
-					      <td>$0.87</td>
-					    </tr>
-					    <tr>
-					      <td>Alan</td>
-					      <td>Jellybean</td>
-					      <td>$3.76</td>
-					    </tr>
-					    <tr>
-					      <td>Jonathan</td>
-					      <td>Lollipop</td>
-					      <td>$7.00</td>
-					    </tr>
-					  </tbody>
-					</Table>
+					      <tbody>
+					        <tr>
+					          <td>Alvin A Bzxcvbnm</td>
+					          <td>20XX-XXXXX</td>
+					          <td>Pending</td>
+					          <td>119</td>
+					        </tr>
+					        <tr>
+					          <td>Alan C Dqwertyuiop</td>
+					          <td>20XX-XXXXX</td>
+					          <td>asdfghjkl</td>
+					          <td>119</td>
+					        </tr>
+					        <tr>
+					          <td>Jonathan E Fokmjnuhj</td>
+					          <td>20XX-XXXXX</td>
+					          <td>Pending</td>
+					          <td>119</td>
+					        </tr>
+					      </tbody>
+					    </Table>
+					  </CollapsibleItem>
+					  <CollapsibleItem header='Thesis Advisees' icon='person'>
+					    <Table striped="true">
+					      <thead>
+					        <tr>
+					          <th data-field="name">Name</th>
+					          <th data-field="studentNo">Student Number</th>
+					          <th data-field="status">Status</th>
+					          <th data-field="unitsEarned">Units Earned</th>
+					        </tr>
+					      </thead>
+
+					      <tbody>
+					        <tr>
+					          <td>Alvin A Bzxcvbnm</td>
+					          <td>20XX-XXXXX</td>
+					          <td>Pending</td>
+					          <td>119</td>
+					        </tr>
+					        <tr>
+					          <td>Alan C Dqwertyuiop</td>
+					          <td>20XX-XXXXX</td>
+					          <td>asdfghjkl</td>
+					          <td>119</td>
+					        </tr>
+					        <tr>
+					          <td>Jonathan E Fokmjnuhj</td>
+					          <td>20XX-XXXXX</td>
+					          <td>Pending</td>
+					          <td>119</td>
+					        </tr>
+					      </tbody>
+					    </Table>
+					  </CollapsibleItem>
+					  <CollapsibleItem header='Registration Advisees' icon='people'>
+					    <Table striped="true">
+					      <thead>
+					        <tr>
+					          <th data-field="name">Name</th>
+					          <th data-field="studentNo">Student Number</th>
+					          <th data-field="status">Status</th>
+					          <th data-field="unitsEarned">Units Earned</th>
+					        </tr>
+					      </thead>
+
+					      <tbody>
+					        <tr>
+					          <td>Alvin A Bzxcvbnm</td>
+					          <td>20XX-XXXXX</td>
+					          <td>Pending</td>
+					          <td>119</td>
+					        </tr>
+					        <tr>
+					          <td>Alan C Dqwertyuiop</td>
+					          <td>20XX-XXXXX</td>
+					          <td>asdfghjkl</td>
+					          <td>119</td>
+					        </tr>
+					        <tr>
+					          <td>Jonathan E Fokmjnuhj</td>
+					          <td>20XX-XXXXX</td>
+					          <td>Pending</td>
+					          <td>119</td>
+					        </tr>
+					      </tbody>
+					    </Table>
+					  </CollapsibleItem>
+					</Collapsible>
 				</div>
 			</div>
 

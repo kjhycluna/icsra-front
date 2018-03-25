@@ -18,17 +18,16 @@ class ListSchedProf extends Component {
 						<div className="teachLoad">
 							Total Teaching Load: XX
 						</div>
-					</div>
-
-					<div className="tableFeed">
+						<br />
+						<br />
 						<Table striped="true">
 	  						<thead>
 	    						<tr>
-						      		<th data-field="id">Subject</th>
-						      		<th data-field="name">Section</th>
-						      		<th data-field="price">Day & Time</th>
-						      		<th data-field="name">No. of Students</th>
-						      		<th data-field="price">Status</th>
+						      		<th data-field="subject">Subject</th>
+						      		<th data-field="section">Section</th>
+						      		<th data-field="day&time">Day & Time</th>
+						      		<th data-field="studentCount">No. of Students</th>
+						      		<th data-field="status">Status</th>
 						    	</tr>
 						  	</thead>
 

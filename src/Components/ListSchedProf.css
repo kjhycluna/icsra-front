@@ -8,23 +8,12 @@
 	/*background-color: #DDEDFF;*/
 }
 
-.tableFeed {
-	position: relative;
-	top: 102px;
-	float: right;
-	width: 70%;
-	padding-left: 30px;
-	padding-right: 30px;
-	min-height: 100%;
-	/*background-color: #EEEEFF;*/
-}
-
 .profName {
 	position: absolute;
 	float: left;
 	left: -5px;
 	text-align: left;
-	letter-spacing: 4px;
+	letter-spacing: 2px;
 	font-size: 28px;
 	font-weight: bold;
 }
@@ -34,7 +23,5 @@
 	float: right;
 	right: -5px;
 	text-align: left;
-	letter-spacing: 4px;
 	font-size: 28px;
-	font-weight: bold;
 }

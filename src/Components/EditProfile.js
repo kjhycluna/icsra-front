@@ -114,7 +114,7 @@ class EditProfile extends Component {
 
 		const statuses=[
 			{stat: "Active", id: 1},
-			{stat: "Onleave", id: 2},
+			{stat: "On Leave", id: 2},
 			{stat: "Retired", id: 3}			
 		];
 
@@ -138,7 +138,7 @@ class EditProfile extends Component {
 							<Modal
 								header='Change Profile Picture'
 								bottomSheet
-								trigger={<Button class="btn tooltipped" data-position="right" data-delay="20" data-tooltip="Change profile picture" floating id="picButton" class="custom-file-input"> <Icon>add_a_photo</Icon> </Button>}>
+								trigger={<Button data-position="right" data-delay="20" data-tooltip="Change profile picture" floating id="picButton" class="custom-file-input"> <Icon>add_a_photo</Icon> </Button>}>
 								<form action='#'>
 									<div class="file-field input-field">
 										<div class="btn">
@@ -195,13 +195,11 @@ class EditProfile extends Component {
 						    <tr>
 						      <td>Preferred Subjects:</td>
 						      <td>
-								<Dropdown trigger={<Button>{this.state.preferredSubjects.first}</Button>}>
+						      	<Dropdown trigger={<Button>{this.state.preferredSubjects.first}</Button>}>
 									<NavItem className="current" node="a" href="#!"><p>{this.state.preferredSubjects.first}</p></NavItem>
 									<NavItem divider />
-									<MapSubjectsList 
-										data={subjects}
-									/>
-								</Dropdown>	
+									<MapSubjectsList data={subjects}/>
+								</Dropdown>
 						      </td>
 						    </tr>
 						    <tr>
@@ -210,9 +208,7 @@ class EditProfile extends Component {
 						      	<Dropdown trigger={<Button>{this.state.preferredSubjects.second}</Button>}>
 									<NavItem className="current" node="a" href="#!"><p>{this.state.preferredSubjects.second}</p></NavItem>
 									<NavItem divider />
-									<MapSubjectsList 
-										data={subjects}
-									/>
+									<MapSubjectsList data={subjects}/>
 								</Dropdown>
 						      </td>
 						    </tr>
@@ -222,9 +218,7 @@ class EditProfile extends Component {
 						      	<Dropdown trigger={<Button>{this.state.preferredSubjects.third}</Button>}>
 									<NavItem className="current" node="a" href="#!"><p>{this.state.preferredSubjects.third}</p></NavItem>
 									<NavItem divider />
-									<MapSubjectsList 
-										data={subjects}
-									/>
+									<MapSubjectsList data={subjects}/>
 								</Dropdown>
 						      </td>
 						    </tr>
