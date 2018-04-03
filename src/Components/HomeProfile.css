@@ -6,13 +6,16 @@
 	letter-spacing: 4px;
 	font-size: 64px;
 	font-weight: bold;
+	top:52%;
+	left:27%;
 }
 
 .settingsBtn {
 	position: absolute;
 	float: right;
-	top: 35px;
-	right: 0px;
+	top: 85%;
+	right: 6%;
+	width:150px;
 }
 
 hr {
@@ -49,8 +52,11 @@ hr {
 }
 
 .profilePicture {
-	position: relative;
-	left: 10%;
+	position: absolute;
+	top: 30%;
+	left: 5%;
+	width:25%;
+	height:25%;
 }
 
 .add {

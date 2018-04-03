@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import {Dropdown, Collapsible, CollapsibleItem, NavItem, Icon, Button, Table, MediaBox} from 'react-materialize';
 import {Parallax} from 'react-parallax'; //npm install react-parallax --save
 import './HomeProfile.css';
-import TopNav from './TopNav';
+import TopNavProf from './TopNavProf';
 import ChangePassword from './ChangePassword';
 import AddConsultationHours from './AddConsultationHours';
 import bg from './images/bg.jpg';
-
 // const autoBind = require('auto-bind');
 
-class HomeProfile extends Component {
+class HomeProfProfile extends Component {
 	/*constructor(props){
 		super(props)
 		this.state = {
@@ -21,9 +20,9 @@ class HomeProfile extends Component {
 	render() {
 	    return (
 		<div>
-            <TopNav/>
+            <TopNavProf/>
 
-			<div >
+			<div>
 				<Parallax bgImage={bg} strength={200}>
 					<div style={{ height: '400px', width:'100%'}}>
 						<div className="name">
@@ -38,15 +37,17 @@ class HomeProfile extends Component {
 					</div>
 
 				</Parallax>
-				<div className="profilePicture">
-					<MediaBox src="https://static.useresponse.com/public/2026agenda/avatars/default-avatar.svg" caption="A demo media box1" width="80%"/>
-				</div>
+			
+			<div className="profilePicture">
+				<MediaBox src="https://static.useresponse.com/public/2026agenda/avatars/default-avatar.svg" caption="A demo media box1" width="80%"/>
 			</div>
-
+			
+			</div>
 			<div className="feed">
+
 				<div className="side">
 					<div>
-						<Table centered="false" bordered="false">
+						<Table>
 						  <tbody>
 						    <tr>
 						      <td>Employee No.:</td>
@@ -235,4 +236,4 @@ class HomeProfile extends Component {
 	}
 }
 
-export default HomeProfile;
+export default HomeProfProfile;

@@ -12,6 +12,16 @@ class SendSwapRequest extends Component {
 			<Modal
 			  	header='Send Request'
 			  	fixedFooter
+			  	actions={
+			    	<Row>
+			    		<Col s={5}>
+			      			<Button flat modal="close" waves="light">Proceed to Swap</Button>
+			      		</Col>
+			      		<Col s={3}>
+			      			<Button flat modal="close" waves="light">Cancel</Button>
+			    		</Col>
+			    	</Row>
+			  	}
 			  	trigger={<Button waves='light'>Swap</Button>}>
 			  	<Row>
 				  <Col s={3} className='grid-example'>Current Course</Col>

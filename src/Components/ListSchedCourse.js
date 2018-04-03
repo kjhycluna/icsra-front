@@ -1,11 +1,10 @@
 import React, { Component } from 'react';					//default
 import { Table, Button, Icon } from 'react-materialize';	//use react-materialize.github.io
 import './ListCourses.css';								//css file of your component
-import TopNav from './TopNav';							//default
+import TopNav from './TopNav';								//default
 import {courseList} from './courseList';
 
-class ListCourses extends Component {
-
+class ListSchedCourse extends Component {
 	createTBody(course){
 		var trows=[];
 		for(var i=0; i<courseList.length; i++){
@@ -18,6 +17,12 @@ class ListCourses extends Component {
 						<td>{courseList[i].section}</td>
 						<td>{courseList[i].time}</td>
 						<td>{courseList[i].faculty}</td>
+						<td>
+					        <Button waves='light'><Icon center>edit</Icon></Button>
+					    </td>
+					    <td>
+					        <Button waves='light'><Icon center>delete</Icon></Button>
+					    </td>
 					</tr>
 				);
 			}
@@ -41,6 +46,8 @@ class ListCourses extends Component {
 							<th data-field="section">Section</th>
 							<th data-field="time">Day/Time</th>
 							<th data-field="instructor">Instructor</th>
+							<th data-field="edit">Edit</th>
+							<th data-field="delete">Delete</th>
 						</tr>
 					</thead>
 
@@ -76,4 +83,4 @@ class ListCourses extends Component {
 	}
 }
 
-export default ListCourses;
+export default ListSchedCourse;
