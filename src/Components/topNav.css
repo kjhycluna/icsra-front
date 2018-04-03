@@ -25,3 +25,18 @@
 	font-weight: bold;
 	color: white;
 }
+
+.logoutPanel{
+	position: relative;
+	bottom: 10%;
+}
+
+.logoutNo {
+	position: absolute;
+	right: 30%;
+}
+
+.logoutYes{
+	position: absolute;
+	left: 30%;
+}

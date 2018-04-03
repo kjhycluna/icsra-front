@@ -53,7 +53,7 @@ class ChangePassword extends Component{
 									<div className="aCancel"><Button className="modal-action modal-close">Cancel</Button></div></div>} 
 		header='Change Password' trigger={<NavItem>Change Password</NavItem>}>
   			<Row>
-  				<Input value={this.state.old_password} s={12} type="password" label="Password" onChange={this.handleOldPassword}/>
+  				<Input value={this.state.old_password} s={12} type="password" label="Current Password" onChange={this.handleOldPassword}/>
   				<Input value={this.state.new_password} s={12} type="password" label="New Password" onChange={this.handleNewPassword}/>
   				<Input value={this.state.retyped_new_password} s={12} type="password" label="Retype New Password" onChange={this.handleRetypedNewPassword} error={this.state.retyped_new_password === "" || (this.state.retyped_new_password === this.state.new_password) ? null : "Incorrect Password"}/>
   			</Row>

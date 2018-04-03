@@ -62,6 +62,11 @@ class AdvAssignmentCreate extends Component{
 					<option value='1'>Adviser not listed</option>
   				</Input>
   				<Input s={12} label="Adviser Name" defaultValue="" disabled/> {/*is only enabled when "Adviser not listed" is selected*/}
+  				<Input s={12} type='select' label="Advisee Type" defaultValue='0'>
+  				    <option value='1'>Thesis</option>
+  				    <option value='2'>Special Problem</option>
+  				    <option value='3'>Registration</option>
+  				</Input>
   			</Row>
 		</Modal>
 		</div>

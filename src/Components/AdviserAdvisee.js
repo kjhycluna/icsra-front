@@ -4,6 +4,7 @@ import './AdviserAdvisee.css';
 import TopNav from './TopNav';
 import {assignment} from './adviser-advisee.js'; //the adviser-advisee data (array of objects with adviser and advisee[] attributes)
 import AdvAssignmentCreate from './AdvAssignmentCreate';
+import AdvAssignmentUpdate from './AdvAssignmentUpdate';
 
 // const autoBind = require('auto-bind');
 
@@ -103,10 +104,11 @@ class AdviserAdvisee extends Component {
             			</tr>
             		</tbody>
             	</Table>
-            	<br /><br /><br />
-				<AdvAssignmentCreate/><br />
-				<Button waves='light'>Update a Student's Adviser</Button><br /><br />
-				<Button waves='light'>Delete a Student's Adviser</Button><br /><br />
+            	<div className="functions">
+					<AdvAssignmentCreate/><br />
+					<AdvAssignmentUpdate/><br />
+					<Button waves='light'>Delete a Student's Adviser</Button>
+				</div>
             </div>
 
 		</div>
