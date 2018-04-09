@@ -4,60 +4,66 @@ import TopNav from './TopNav';
 import './css/Login.css';
 import './css/HomeProfile.css';
 import './css/AddUser.css';
+import axios from 'axios'
 
+const request = require('request');
 const autoBind = require('auto-bind');
 
 class AddUser extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
+			empno:"",
+			email:"",
+			password:"",
+			cpassword:"",
 			fname: "",
 			lname: "",
-			status: "",
+			status: "Available",
 			rank: "",
-			email:"",
-			committee: false,
-			password:"",
-			cpassword:""
+			teaching_load: 0,
+			study_load: 0,
+			place_of_study: "",
+			committee_member: false,
+			position: ""
 		}
 		autoBind(this);
-		this.updateFName = this.updateFName.bind(this);
-		this.updateLName = this.updateLName.bind(this);
-		this.updateStatus = this.updateStatus.bind(this);
-		this.updateRank = this.updateRank.bind(this);
-		this.updateEmail = this.updateEmail.bind(this);
-		this.updateCommittee = this.updateCommittee.bind(this);
-		this.updatePassword = this.updatePassword.bind(this);
-		this.updateCPassword = this.updateCPassword.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	updateEmail(event){
-		this.setState({email : event.target.value})
+	handleChange(e) {
+		let change={};
+		change[e.target.name] = e.target.value;
+		this.setState(change);
 	}
-	updatePassword(event){
-		this.setState({password : event.target.value})
-	}
-	updateCPassword(event){
-		this.setState({cpassword : event.target.value})
-	}
-	updateFName(event){
-		this.setState({fname : event.target.value})
-	}
-	updateLName(event){
-		this.setState({lname : event.target.value})
-	}
-	updateStatus(event){
-		this.setState({status : event.target.value})
-	}
-	updateRank(event){
-		this.setState({rank : event.target.value})
-	}
+
 	updateCommittee(event){
 		this.setState({committee : !this.state.committee})
 	}
 
 	handleSubmit(event){
+		console.log(this.state);
+		axios.post(
+			'faculty/add-faculty',
+			{
+				empno: this.state.empno,
+				email: this.state.email,
+	      password: this.state.password,
+	      fname: this.state.fname,
+	      lname: this.state.lname,
+	      status: this.state.status,
+	      rank: this.state.rank,
+	      teaching_load: this.state.teaching_load,
+	      study_load: this.state.study_load,
+	      place_of_study: this.state.place_of_study,
+	      committee_member: ""+this.state.committee_member,
+	      position:  this.state.position
+			},
+			(error, response, body) => {
+					console.log(body);
+			});
+
 		window.location = '/home';	//should have authentication before this
 	}
 
@@ -74,18 +80,26 @@ class AddUser extends Component {
 					</div>
 					<div className="inputs-addUser">
 						<Row>
-							<Input type="text" label="First Name" s={12} onChange={this.updateFName} />
-							<Input type="text" label="Last Name" s={12} onChange={this.updateLName} />
-							<Input type="text" label="Status" s={12} onChange={this.updateStatus} />
-							<Input type="text" label="Rank" s={12} onChange={this.updateRank} />
-							<Input type="email" label="Email" s={12} onChange={this.updateEmail} />
-							<Input type="checkbox" label="Committee Member?" s={12} onChange={this.updateCommittee} />
-							<Input type="password" label="Password" s={12} onChange={this.updatePassword} />
-							<Input type="password" label="Confirm Password" s={12} onChange={this.updateCPassword} />
+							<Input name="empno" type="text" label="Employee No." s={12} onChange={this.handleChange} />
+							<Input name="fname" type="text" label="First Name" s={12} onChange={this.handleChange} />
+							<Input name="lname" type="text" label="Last Name" s={12} onChange={this.handleChange} />
+							<Input name="status" type="select" label="Status" s={12} onChange={this.handleChange}>
+								<option value='Available'>Available</option>
+								<option value='Not Available'>Not Available</option>
+							</Input>
+							<Input name="rank" type="text" label="Rank" s={12} onChange={this.handleChange} />
+							<Input name="email" type="email" label="Email" s={12} onChange={this.handleChange} />
+							<Input name="teaching_load" type="number" label="Teaching Load" s={12} onChange={this.handleChange} />
+							<Input name="study_load" type="number" label="Study Load" s={12} onChange={this.handleChange} />
+							<Input name="place_of_study" type="Text" label="Place of Study" s={12} onChange={this.handleChange} />
+							<Input name="committee_member" type="checkbox" label="Committee Member?" s={12} onChange={this.updateCommittee} />
+							<Input name="position" type="text" label="Position" s={12} onChange={this.handleChange} />
+							<Input name="password" type="password" label="Password" s={12} onChange={this.handleChange} />
+							<Input name="cpassword" type="password" label="Confirm Password" s={12} onChange={this.handleChange} />
 						</Row>
 
 						<div className="center">
-							<Button waves='light' onClick={this.state.handleSubmit}>
+							<Button waves='light' onClick={this.handleSubmit}>
 								CONFIRM
 							</Button>
 						</div>
