@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Table} from 'react-materialize';
-import './AdviserAdvisee.css';
+import './css/AdviserAdvisee.css';
 import TopNav from './TopNav';
 import {advisees} from './advisees.js'; //the adviser-advisee data (array of objects with adviser and advisee[] attributes)
 

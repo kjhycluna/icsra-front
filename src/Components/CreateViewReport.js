@@ -1,7 +1,7 @@
 import React, { Component } from 'react';						//default
 import { Button, Table, Icon} from 'react-materialize';				//use react-materialize.github.io
 //import NumericInput from 'react-numeric-input';
-import './CreateViewReport.css';										//css file of your component
+import './css/CreateViewReport.css';										//css file of your component
 import TopNav from './TopNav';									//default
 import {dateTime} from './datetimelog'; //dummy values for courses
 

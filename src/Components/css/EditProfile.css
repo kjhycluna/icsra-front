@@ -1,0 +1,89 @@
+.feed {
+	position: relative;
+	margin: auto;
+	top: 50px;
+	width: 80%;
+	min-height: 1000px;
+	background-color: white;
+}
+
+#row0 .input-field{
+	position: absolute;
+	width: 90%;
+	height: 100%;
+	top: 25px;
+	left: -10px;
+}
+
+#name{
+	font-size: 45px;
+	color: #3c3c3c;
+}
+
+#cancelBtn{;
+	position: absolute;
+	float: right;
+	top: 9%;
+	right: 3%;
+	z-index: 1;
+}
+
+#leftCol {
+	position: relative;
+	top: 125px;
+	float: left;
+	width: 30%;
+	min-height: 100%;
+}
+
+#leftCol #media #pic {
+	position: relative;
+	top: 0;
+	left: 10%;
+	width: 80%;
+	height: 25.5%;
+}
+
+Button{
+	width: 100%;
+}
+
+#rightCol {
+	position: relative;
+	top: 125px;
+	float: right;
+	width: 70%;
+	padding-left: 30px;
+	padding-right: 30px;
+	min-height: 100%;
+	color: grey;
+}
+
+.desc{
+	width: 47%;
+}
+
+#personal tr{
+	height: 90px;
+}
+
+#pref{
+	text-align: center;
+}
+
+#saveChanges {
+	position: relative;
+	margin-left: 30%;
+	margin-right: 30%;
+	text-align: center;
+}
+
+#s1 {
+	position: relative;
+	float: left;
+}
+
+#c1 {
+	position: relative;
+	float: right;
+}

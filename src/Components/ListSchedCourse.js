@@ -1,6 +1,6 @@
 import React, { Component } from 'react';					//default
 import { Table, Icon, Button, Modal, Input } from 'react-materialize';	//use react-materialize.github.io
-import './ListCourses.css';								//css file of your component
+import './css/ListCourses.css';								//css file of your component
 import TopNav from './TopNav';								//default
 import ConfirmUpdate from './ConfirmUpdate';
 

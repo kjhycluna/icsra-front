@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Table} from 'react-materialize';
 import TopNav from './TopNav';
-import './SwapSchedule.css';
+import './css/SwapSchedule.css';
 import SendSwapRequest from './SendSwapRequest';
 
 class SwapSchedule extends Component {

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {Row, Input, Button} from 'react-materialize';
 import TopNav from './TopNav';
-import './Login.css';
-import './HomeProfile.css';
-import './AddUser.css';
+import './css/Login.css';
+import './css/HomeProfile.css';
+import './css/AddUser.css';
 
 const autoBind = require('auto-bind');
 

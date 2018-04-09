@@ -1,6 +1,6 @@
 import React, { Component } from 'react';						//default
 import { Button} from 'react-materialize';				//use react-materialize.github.io
-import './Curriculum.css';										//css file of your component
+import './css/Curriculum.css';										//css file of your component
 import TopNav from './TopNav';									//default
 
 class Curriculum extends Component {

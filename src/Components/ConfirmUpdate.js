@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Button, Input, Icon } from 'react-materialize';
-import './ConfirmUpdate.css';
+import './css/ConfirmUpdate.css';
 
 class ConfirmUpdate extends Component{
 	/*constructor(props){

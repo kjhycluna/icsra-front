@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Dropdown, NavItem, Icon, Button, Table, MediaBox, CollapsibleItem, Collapsible} from 'react-materialize';
 import {Parallax} from 'react-parallax';
 import './css/HomeProfile.css';
-import TopNav from './TopNav';
+import TopNav from './TopNavProf';
 import ChangePassword from './ChangePassword';
 import AddConsultationHours from './AddConsultationHours';
 import bg from './images/bg.jpg';

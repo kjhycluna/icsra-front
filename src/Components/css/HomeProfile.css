@@ -6,31 +6,29 @@
 	letter-spacing: 4px;
 	font-size: 64px;
 	font-weight: bold;
+	top:52%;
+	left:27%;
 }
 
 .settingsBtn {
 	position: absolute;
 	float: right;
-	top: 35px;
-	right: 0px;
+	top: 65%;
+	right: 10%;
+	width:150px;
+	z-index: 1;
 }
 
-hr {
-	position: relative;
-	top: 90px;
-}
-
-.feed {
+.homeFeed {
 	position: relative;
 	margin: auto;
-	top: 50px;
 	width: 80%;
-	min-height: 1000px;
+	min-height: 700px;
 }
 
 .tableFeed {
 	position: relative;
-	top: 102px;
+	top: 90px;
 	/*float: right;*/
 	width: 70%;
 	padding-left: 30px;
@@ -41,7 +39,7 @@ hr {
 
 .side {
 	position: relative;
-	top: 102px;
+	top: 90px;
 	float: left;
 	width: 30%;
 	min-height: 100%;
@@ -49,8 +47,11 @@ hr {
 }
 
 .profilePicture {
-	position: relative;
-	left: 10%;
+	position: absolute;
+	top: 30%;
+	left: 5%;
+	width:25%;
+	height:25%;
 }
 
 .add {

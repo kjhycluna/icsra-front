@@ -1,14 +1,65 @@
 import React, { Component } from 'react';					//default
 import { Table } from 'react-materialize';	//use react-materialize.github.io
-import './ListCourses.css';								//css file of your component
+import './css/ListCourses.css';								//css file of your component
 import TopNav from './TopNav';								//default
-
-const courses =[
-	{id: 1, course_no:"CMSC 128",section:"A",time:"TTh 8:00-9:00", room:"ICSMH", fic: "", status:"TBA",students:64},
-	{id: 2, course_no:"CMSC 132",section:"ST1L",time:"T 13:00-16:00", room:"ICS PC6", fic: "", status:"TBA",students:16}
-]
+import {courseList} from './courseList';
 
 class ListCourseOfferings extends Component {
+	createTBody(course){
+		var trows=[];
+		for(var i=0; i<courseList.length; i++){
+			console.log(course);
+			console.log(courseList[i]);
+			if(course === courseList[i].title){
+				trows.push(
+					<tr>
+						<td>{courseList[i].title}</td>
+						<td>{courseList[i].section}</td>
+						<td>{courseList[i].time}</td>
+						<td>{courseList[i].faculty}</td>
+					</tr>
+				);
+			}
+		}
+		return trows;
+	}
+	createTable(){
+		var tables=[];
+		var courses=[];
+		for(var i=0; i<courseList.length; i++){
+			if(!courses.includes(courseList[i].title)) courses.push(courseList[i].title);
+		}
+
+		for(i=0; i<courses.length; i++){
+			tables.push(
+				<div>
+				<Table striped="true">
+					<thead>
+						<tr>
+							<th data-field="title">Title</th>
+							<th data-field="section">Section</th>
+							<th data-field="time">Day/Time</th>
+							<th data-field="instructor">Instructor</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						{this.createTBody(courses[i])}
+					</tbody>
+				</Table>
+				<br></br>
+				</div>
+			);
+		}
+		return tables;
+
+	}
+
+	createList(){
+		return(
+			<div>{this.createTable()}</div>
+		)
+	}
 	render() {
 		return (
 			<div>
@@ -16,34 +67,7 @@ class ListCourseOfferings extends Component {
 					
 				<div className="feed">
 					
-					<br />
-					<div>
-						<Table striped="true">
-						  <thead>
-						    <tr>
-						      <th data-field="subj">Subject</th>
-						      <th data-field="sec">Section</th>
-						      <th data-field="dayTime">Day/Time</th>
-						      <th data-field="inst">Instructor</th>
-						      <th data-field="studentCount">No. of Students</th>
-						    </tr>
-						  </thead>
-
-						  <tbody>
-						  	{
-						  		courses.map((item,index)=>{
-						  			return(<tr key={index}>
-						  				<td>{item.course_no}</td>
-						  				<td>{item.section}</td>
-						  				<td>{item.time}</td>
-						  				<td>instructor x</td>
-						  				<td>{item.students}</td>
-						  			</tr>)
-						  		})
-						  	}
-							</tbody>
-						</Table>
-					</div>
+					{this.createList()}
 
 				</div>
 			</div>

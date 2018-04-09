@@ -1,6 +1,6 @@
 import React, { Component } from 'react';					//default
 import { Table } from 'react-materialize';	//use react-materialize.github.io
-import './ListSchedProf.css';								//css file of your component
+import './css/ListSchedProf.css';								//css file of your component
 import TopNav from './TopNav';								//default
 
 // const autoBind = require('auto-bind');

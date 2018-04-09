@@ -35,18 +35,12 @@ class TopNav extends Component {
 				  options={{ closeOnClick: true }}
 				  >
 				  <SideNavItem subheader>ICSRA</SideNavItem>
-				  <SideNavItem waves href='/home/admin'>Home</SideNavItem>
+				  <SideNavItem waves href='/home'>Home</SideNavItem>
 				  <SideNavItem waves href='/list-courses'>Course Offerings</SideNavItem>
 				  <SideNavItem waves href='/list-sched-prof'>Schedules (per prof)</SideNavItem>
 				  <SideNavItem waves href='/home/swap'>Swap Schedule Request</SideNavItem>
 				  <SideNavItem waves href='/adviser-advisee-user'>List of Advisees</SideNavItem>
-				  <SideNavItem divider/>
-				  <SideNavItem waves href='/adviser-advisee'>Adviser-Advisee Assignments</SideNavItem>
-				  <SideNavItem waves href='/list-sched-course'>Schedules (per course)</SideNavItem>
-				  <SideNavItem waves href='/curriculum'>Curriculum</SideNavItem>
-				  <SideNavItem waves href='/reports'>Generate Reports</SideNavItem>
-				  <SideNavItem waves href='/add-user'>Add User</SideNavItem>
-				  <SideNavItem waves href='/edit-user'>Edit User</SideNavItem>
+				  <SideNavItem waves href='/list-curriculum'>View Curriculum</SideNavItem>
 				  <SideNavItem divider/>
 				  <LogoutPrompt />
 				</SideNav>

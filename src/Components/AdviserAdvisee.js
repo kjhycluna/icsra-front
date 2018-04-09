@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import {Table, Button} from 'react-materialize';
-import './AdviserAdvisee.css';
+import {Table} from 'react-materialize';
+import './css/AdviserAdvisee.css';
 import TopNav from './TopNav';
 import {assignment} from './adviser-advisee.js'; //the adviser-advisee data (array of objects with adviser and advisee[] attributes)
 import AdvAssignmentCreate from './AdvAssignmentCreate';
 import AdvAssignmentUpdate from './AdvAssignmentUpdate';
+import AdvAssignmentDelete from './AdvAssignmentDelete';
 
 // const autoBind = require('auto-bind');
 
@@ -107,7 +108,7 @@ class AdviserAdvisee extends Component {
             	<div className="functions">
 					<AdvAssignmentCreate/><br />
 					<AdvAssignmentUpdate/><br />
-					<Button waves='light'>Delete a Student's Adviser</Button>
+					<AdvAssignmentDelete/><br />
 				</div>
             </div>
 

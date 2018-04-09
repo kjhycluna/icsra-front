@@ -1,0 +1,72 @@
+
+.feed {
+	position: relative;
+	margin: auto;
+	top: 50px;
+	width: 80%;
+	min-height: 1000px;
+}
+
+.reportName{
+    font-size: 40px;
+    text-align: left;
+}
+
+.reportsbtn {
+	z-index: 0;
+}
+
+.divButtons{
+    width: 100%; 
+    height: 40px;
+    margin-left: auto; 
+    margin-right: auto; 
+    margin-top: 20px; 
+    border-radius: 20px;
+}
+
+.savedSched{
+	
+}
+.emptyDropdown{ 
+	width: 20%; 
+  	display: inline-block;
+  	float: left;	
+}
+
+.subjectDropdown{
+	text-align: center; 
+	width: 20%; 
+  	display: inline-block;
+  	float: left;
+}
+
+.sectionDropdown{
+	text-align: center; 
+	width: 20%; 
+  	display: inline-block;
+  	float: left;	
+}
+
+.profDropdown{
+	text-align: center; 
+	width: 20%; 
+  	display: inline-block;
+  	float: left;
+}
+
+.saveButton{
+	text-align: center; 
+	width: 20%; 
+  	display: inline-block;
+  	float: left;
+}
+
+.divBlank{
+	position: relative;
+}
+
+.divTables{
+	position: relative;
+	top: 50px;
+}

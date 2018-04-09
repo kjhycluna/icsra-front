@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Row, Input, Button} from 'react-materialize';
-import './Login.css';
+import './css/Login.css';
+import {userList} from './userList';
 
 const autoBind = require('auto-bind');
 
@@ -25,24 +26,44 @@ class Login extends Component {
 		this.setState({password : event.target.value})
 	}*/
 
-	handleSubmit(event){
+	updateEmailValue(event){
 		this.setState({email : event.target.value})
+	}
+	updatePassValue(event){
 		this.setState({password : event.target.value})
-		window.location = '/home';	//should have authentication before this
+	}
+	
+	handleSubmit(event){
+		// fetch("/api/login"
+		// if(res.committee_member){
+		// 	window.location = '/home/admin'
+		// }else{
+		// 	window.location = '/home'
+		// }
+
+		for(var i=0; i<userList.length; i++){
+			if(this.state.email == userList[i].email && this.state.password == userList[i].password){
+				console.log(userList[i])
+				if(userList[i].committee_member){
+					window.location = '/home/admin'
+				}else{
+					window.location = '/home'
+				}
+			}
+		}
 	}
 
 	render() {
 	    return (
 		<div>
 			<div className="left">
-				ICSRA
+				   ICSRA
 			</div>
-
 			<div className="right">
 				<div className="inputs">
 					<Row>
-						<Input type="email" label="Email" s={12} />
-						<Input type="password" label="Password" s={12} />
+						<Input value={this.state.email} onChange={event => this.updateEmailValue(event)} type="email" label="Email" s={12}/>
+						<Input value={this.state.password} onChange={event => this.updatePassValue(event)} type="password" label="Password" s={12} />
 					</Row>
 
 					<div className="center">
@@ -59,4 +80,3 @@ class Login extends Component {
 }
 
 export default Login;
-//Line 49: <Button waves='light' onClick={this.handleSubmit()}>
