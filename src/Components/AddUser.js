@@ -6,7 +6,6 @@ import './css/HomeProfile.css';
 import './css/AddUser.css';
 import axios from 'axios'
 
-const request = require('request');
 const autoBind = require('auto-bind');
 
 class AddUser extends Component {
