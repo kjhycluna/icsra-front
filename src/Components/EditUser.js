@@ -13,6 +13,7 @@ class EditUser extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
+			empno: "",
 			status: "",
 			rank: "",
 			email:"",
@@ -20,13 +21,14 @@ class EditUser extends Component {
 			password:"",
 			cpassword:"",
 			rows:[],
-			fields:["Employee No.", "First Name", "Last Name"],
+			fields:["Employee No.", "First Name", "Last Name", "Status"],
 			filter:"Employee No.",
 			selectedEmpNo: 0,
 			input:'',
-			view_all: true
+			view_all: false
 		}
-		autoBind(this);
+		// autoBind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.handleViewAll = this.handleViewAll.bind(this);
 	}
@@ -49,30 +51,42 @@ class EditUser extends Component {
 		this.setState({view_all: false});
 	}
 
-	// updateEmail(event){
-	// 	this.setState({email : event.target.value})
-	// }
-	// updatePassword(event){
-	// 	this.setState({password : event.target.value})
-	// }
-	// updateCPassword(event){
-	// 	this.setState({cpassword : event.target.value})
-	// }
-	// updateStatus(event){
-	// 	this.setState({status : event.target.value})
-	// }
-	// updateRank(event){
-	// 	this.setState({rank : event.target.value})
-	// }
-	// updateCommittee(event){
-	// 	this.setState({committee : !this.state.committee})
-	// }
-
 	handleViewAll(event){
 		this.setState({view_all: true})
 	}
 
-	createTable(){ //function that creates tables of adviser - # of advisees - advisees[], if the adviser has no current advisees, he/she is not included
+	handleSubmit(empno) {
+		axios.post(
+			'faculty/edit-faculty',
+			{
+	      fname: this.state.fname,
+	      lname: this.state.lname,
+	      status: this.state.status,
+	      rank: this.state.rank,
+	      study_load: this.state.study_load,
+	      place_of_study: this.state.place_of_study,
+	      committee_member: ""+this.state.committee_member,
+	      position:  this.state.position,
+	      empno: this.state.empno
+			},
+			(error, response, body) => {
+					console.log(body);
+			});
+		if(this.state.password!=='') {
+			axios.post(
+				'faculty/edit-password',
+				{
+		      empno: this.state.empno,
+		      password: this.state.password
+				},
+				(error, response, body) => {
+						console.log(body);
+				});
+		}
+		window.Materialize.toast("Edited",3000);
+}
+
+	createTable() { 
 		var table = [];
 		if(!this.state.view_all){
 			let input = this.state.input;
@@ -91,6 +105,10 @@ class EditUser extends Component {
 					if(rows[i].lname===input)
 						table.push(rows[i])
 					break;
+				case "Status":
+					if(rows[i].lname===input)
+						table.push(rows[i])
+					break;
 				}
 			}
 		}else table=this.state.rows;
@@ -104,6 +122,7 @@ class EditUser extends Component {
             				<td >Status</td>
             				<td >Rank</td>
             				<td >Email</td>
+            				<td >Place of Study</td>
             			</tr>
             			{this.fillTable(table)} 
             		</tbody>
@@ -115,7 +134,6 @@ class EditUser extends Component {
 	fillTable(table){
 		var table2 = [];
 		for(var i=0; i<table.length; i++){
-			// if(assignment[i].advisees.length > 0){
 				table2.push(<tr> 
 					<td >{table[i].empno}</td>
 					<td >{table[i].fname + " " + table[i].lname}</td>
@@ -124,49 +142,55 @@ class EditUser extends Component {
 					<td >{table[i].email}</td>
 					<td >{table[i].place_of_study}</td>
 					{this.createModal(table[i])}
-					</tr>);
-			// }
+					</tr>)
 		}
 		return table2;
 	}
 
 	createModal(user){
-		
 		return (
-		<td>
+			<td>
+				<Modal id="modal1" actions={
+					<div>
+						<Modal header='Confirm Changes' 
+						actions={
+							<div>
+								<div className="aCancel"><Button className="modal-action modal-close red">No</Button>
+								</div>
+								<div className="aSave"><Button className="modal-action modal-close blue" onClick={this.handleSubmit(user.empno)}>Yes</Button>
+								</div>
+							</div>
+						} 
+						trigger={
+							<div className="aSave">
+								<Button className="modal-action modal-close">Save Changes</Button>
+							</div>}>
 
-		<Modal id="modal1" actions={<div>
-									<Modal header='Confirm Changes' actions={
-										<div>
-											<div className="aCancel"><Button className="modal-action modal-close red">No</Button>
-											</div>
-											<div className="aSave"><Button className="modal-action modal-close blue" onClick={this.handleYes}>Yes</Button>
-											</div>
-										</div>} 
-									trigger={<div className="aSave"><Button className="modal-action modal-close">Save Changes</Button></div>}>
-									<p>Are you sure?</p>
-									</Modal>
-									<div className="aCancel"><Button className="modal-action modal-close">Cancel</Button></div></div>} 
-		header='Edit User' trigger={<Button waves='light'>Edit</Button>}>
-  			<Row>
-  				<Input s={12} label="First Name" defaultValue={user.fname}/>
-  				<Input s={12} label="Last Name" defaultValue={user.lname}/>
-  				<Input s={12} type='select' label="Status" defaultValue={user.status}>
-						<option value='Available'>Available</option>
-						<option value='Not Available'>Not Available</option>
-  				</Input>
-  				<Input s={12} label="Rank" defaultValue={user.rank}/>
-  				<Input s={12} label="Email" defaultValue={user.email}/>
-  				<Input s={12} label="Place of Study" defaultValue={user.place_of_study}/>
-  				<Input s={12} label="Password" type="password" defaultValue='12345678'/>
-  			</Row>
-		</Modal>
-		</td>
+						<p>Are you sure?</p>
+						</Modal>
+						<div className="aCancel">
+							<Button className="modal-action modal-close">Cancel</Button>
+						</div>
+					</div>}
+
+						header='Edit User' trigger={<Button waves='light'>Edit</Button>}>
+		  			<Row>
+		  				<Input s={12} name="fname" label="First Name" defaultValue={user.fname} onChange={this.handleChange} />
+		  				<Input s={12} name="lname" label="Last Name" defaultValue={user.lname} onChange={this.handleChange} />
+		  				<Input s={12} name="status" type='select' label="Status" defaultValue={user.status} onChange={this.handleChange} >
+								<option value='Available'>Available</option>
+								<option value='Not Available'>Not Available</option>
+		  				</Input>
+		  				<Input s={12} name="rank" label="Rank" defaultValue={user.rank} onChange={this.handleChange}/>
+		  				<Input s={12} name="email" label="Email" defaultValue={user.email} onChange={this.handleChange}/>
+		  				<Input s={12} name="place_of_study" label="Place of Study" defaultValue={user.place_of_study} onChange={this.handleChange}/>
+		  				<Input s={12} name="password" label="Password" type="password" placeholder="Input to change password" onChange={this.handleChange}/>
+		  				<Input s={12} name="cpassword" label="Confirm Password" type="password" onChange={this.handleChange}/>
+		  			</Row>
+				</Modal>
+			</td>
 		);
 	}
-
-
-
 
 	render() {
 	    return (
@@ -191,12 +215,9 @@ class EditUser extends Component {
 					    }
 					    </Input>
 							<Input name="input" type="text" label="Search" s={12} onChange={this.handleChange} />
-							<Button waves='light' onClick={this.state.handleViewAll}>
-								View All
-							</Button>
 
-							{this.createTable()}
 						</Row>
+							{this.createTable()}
 					</div>
 				</div>
 			</div>
@@ -207,4 +228,3 @@ class EditUser extends Component {
 }
 
 export default EditUser;
-//Line 49: <Button waves='light' onClick={this.handleSubmit()}>

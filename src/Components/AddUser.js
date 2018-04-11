@@ -63,7 +63,7 @@ class AddUser extends Component {
 					console.log(body);
 			});
 
-		window.location = '/home';	//should have authentication before this
+		window.location = '/add-user';	//should have authentication before this
 	}
 
 	render() {
