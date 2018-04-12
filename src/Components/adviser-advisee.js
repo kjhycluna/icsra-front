@@ -6,3 +6,11 @@ exports.assignment = [
 	{adviser: 'Maureen Lauron', advisees: ['Vince Valoroso', 'Maureen Batacan', 'Jira Angel']},
 	{adviser: 'Miyah Queliste', advisees: []}
 ]
+
+exports.students = [
+	{name: "Ate girl"},
+	{name: "Bebe girl"},
+	{name: "Mumsh"},
+	{name: "Kuyabelles"},
+	{name: "Charmsxz"},
+]

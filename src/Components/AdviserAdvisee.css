@@ -17,7 +17,12 @@
 	/*background-color: #EEEEFF;*/
 }
 
-td {
+.functions{
+	position: fixed;
+	bottom: 20px;
+}
+
+.tdStyle {
 	border-style: solid;
 	text-align: center;
 	font-size: 15px;
@@ -29,8 +34,70 @@ td {
 .classification {
 	font-family: Times New Roman;
 	font-size: 25px;
-}
 
+	border-style: solid;
+	text-align: center;
+	font-family: Arial;
+	white-space: pre;
+
+}
 .advisers {
 	font-size: 18px;
+
+	border-style: solid;
+	text-align: center;
+	font-family: Arial;
+	white-space: pre;
+}
+
+.aSave {
+	float: left;
+	margin-left: 21%;
+	width: 27%;
+}
+
+.aCancel {
+	float: right;
+	margin-right: 21%;
+	width: 27%;
+}
+
+/*recently added: 31 March 2018*/
+
+.leftHeader{
+	width: 20%;
+}
+
+.dividerBottom{
+	position: relative;
+	padding-top: 50%;
+}
+
+.sideBottom{
+	position: relative;
+	padding-top: 30%;
+}
+
+.updateAdvPanel{
+	position: relative;
+	padding: 0% 10% 0% 10%;
+	height: 100%;
+}
+
+#s2{
+	position: relative;
+	float: left;
+	width: 25%;
+	left: 10%;
+}
+
+#c2{
+	position: relative;
+	float: right;
+	width: 25%;
+	right: 10%;
+}
+
+#mod2{
+	height: 60% !important;
 }

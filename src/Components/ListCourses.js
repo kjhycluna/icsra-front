@@ -1,5 +1,5 @@
 import React, { Component } from 'react';					//default
-import { Table, Button, Icon } from 'react-materialize';	//use react-materialize.github.io
+import { Table } from 'react-materialize';	//use react-materialize.github.io
 import './ListCourses.css';								//css file of your component
 import TopNav from './TopNav';							//default
 import {courseList} from './courseList';
@@ -11,7 +11,7 @@ class ListCourses extends Component {
 		for(var i=0; i<courseList.length; i++){
 			console.log(course);
 			console.log(courseList[i]);
-			if(course == courseList[i].title){
+			if(course === courseList[i].title){
 				trows.push(
 					<tr>
 						<td>{courseList[i].title}</td>

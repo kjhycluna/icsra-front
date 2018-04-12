@@ -1,7 +1,6 @@
 .name {
 	position: absolute;
 	float: left;
-	left: -5px;
 	text-align: left;
 	letter-spacing: 4px;
 	font-size: 64px;
@@ -13,7 +12,7 @@
 .settingsBtn {
 	position: absolute;
 	float: right;
-	top: 85%;
+	top: 65%;
 	right: 6%;
 	width:150px;
 }
@@ -25,10 +24,10 @@ hr {
 
 .feed {
 	position: relative;
-	margin: auto;
 	top: 50px;
 	width: 80%;
 	min-height: 1000px;
+	background-color: red;
 }
 
 .tableFeed {
@@ -39,7 +38,7 @@ hr {
 	padding-left: 30px;
 	padding-right: 30px;
 	min-height: 100%;
-	/*background-color: #EEEEFF;*/
+	background-color: #EEEEFF;
 }
 
 .side {
@@ -48,7 +47,7 @@ hr {
 	float: left;
 	width: 30%;
 	min-height: 100%;
-	/*background-color: #EEEEFF;*/
+	background-color: #EEEEFF;
 }
 
 .profilePicture {

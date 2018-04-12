@@ -1,0 +1,23 @@
+#s2{
+	position: relative;
+	float: left;
+	width: 25%;
+	left: 10%;
+}
+
+#c2{
+	position: relative;
+	float: right;
+	width: 25%;
+	right: 10%;
+}
+
+#s1 {
+	position: relative;
+	float: left;
+}
+
+#c1 {
+	position: relative;
+	float: right;
+}

@@ -31,8 +31,8 @@ class AddConsultationHours extends Component {
 			  	fixedFooter
 			  	actions={
 			    	<div>
-			      		<Button flat modal="close" waves="light">Save</Button>
-			      		<Button flat modal="close" waves="light">Cancel</Button>
+			      		<div className="aSave"><Button modal="close" waves="light">Save</Button></div>
+			      		<div className="aCancel"><Button modal="close" waves="light">Cancel</Button></div>
 			    	</div>
 			  	}
 			  	trigger={<Button waves='light'>Add Consultation Hours</Button>}>

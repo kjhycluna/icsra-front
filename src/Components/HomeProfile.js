@@ -3,70 +3,78 @@ import {Dropdown, Collapsible, CollapsibleItem, NavItem, Icon, Button, Table, Me
 import {Parallax} from 'react-parallax'; //npm install react-parallax --save
 import './HomeProfile.css';
 import TopNav from './TopNav';
+import TopNavProf from './TopNavProf';
 import ChangePassword from './ChangePassword';
 import AddConsultationHours from './AddConsultationHours';
+import cookie from 'react-cookies'
 import bg from './images/bg.jpg';
-
 // const autoBind = require('auto-bind');
 
 class HomeProfile extends Component {
-	/*constructor(props){
+	constructor(props){
 		super(props)
-		this.state = {
+		this.state = { user: cookie.load('user') }
+		console.log(this.state.user)
+		// this.state = {
 			
+		// }
+		// autoBind(this);
+	}
+
+	createTopNav(){
+		if(this.state.user.committee_member === "True"){
+			return <TopNav/>
+		}else{
+			return <TopNavProf/>
 		}
-		autoBind(this);
-	}*/
+	}
 
 	render() {
 	    return (
 		<div>
-            <TopNav/>
-
+            { this.createTopNav() }
 			<div >
 				<Parallax bgImage={bg} strength={200}>
 					<div style={{ height: '400px', width:'100%'}}>
 						<div className="name">
-							FIRST M. LASTNAME 
-						</div>
-						<div className="settingsBtn">
-							<Dropdown trigger={<Button><Icon>settings</Icon></Button>}>
-								<NavItem node='a' href='/edit-profile'>EditProfile</NavItem>
-								<ChangePassword/>
-							</Dropdown>
+							{ this.state.user.fname }  { this.state.user.lname }
 						</div>
 					</div>
 
 				</Parallax>
-				<div className="profilePicture">
-					<MediaBox src="https://static.useresponse.com/public/2026agenda/avatars/default-avatar.svg" caption="A demo media box1" width="80%"/>
-				</div>
+				
+			</div>
+			<div className="settingsBtn">
+				<Dropdown trigger={<Button><Icon>settings</Icon></Button>}>
+					<NavItem node='a' href='/edit-profile'>EditProfile</NavItem>
+					<ChangePassword/>
+				</Dropdown>
 			</div>
 
 			<div className="feed">
 				<div className="side">
 					<div>
-						<Table centered="false" bordered="false">
+						<Table>
 						  <tbody>
 						    <tr>
 						      <td>Employee No.:</td>
-						      <td>000000000</td>
+						      <td>{ this.state.user.empno}</td>
 						    </tr>
 						    <tr>
 						      <td>Rank:</td>
-						      <td>Jellybean Lollipop</td>
+						      <td>{ this.state.user.rank }</td>
 						    </tr>
 						    <tr>
 						      <td>Status:</td>
-						      <td>Lollipop</td>
+						      <td>{ this.state.user.status}</td>
 						    </tr>
 						    <tr>
 						      <td>Teaching Load:</td>
-						      <td>%d</td>
+						      <td>{ this.state.user.teaching_load}</td>
 						    </tr>
 						    <tr>
 						      <td>Study Load:</td>
-						      <td>%d</td>
+						      <td>{ this.state.user.study_load }</td>
 						    </tr>
 						    <tr>
 						      <td>Preferred Subjects:</td>
@@ -90,37 +98,47 @@ class HomeProfile extends Component {
 					<Table striped="true">
 					  <thead>
 					    <tr>
-					      <th data-field="course">Course</th>
-					      <th data-field="section">Section</th>
-					      <th data-field="time">Day and Time</th>
-					      <th data-field="room">Room</th>
+					      <th data-field="course">Time</th>
+					      <th data-field="monday">Monday</th>
+					      <th data-field="tuesday">Tuesday</th>
+					      <th data-field="wednesday">Wednesday</th>
+					      <th data-field="thursday">Thursday</th>
+					      <th data-field="friday">Friday</th>
 					    </tr>
 					  </thead>
 
 					  <tbody>
 					    <tr>
-					      <td>Alvin</td>
-					      <td>Eclair</td>
-					      <td>$0.87</td>
-					      <td>a</td>
+					      <td ref="7-7:30">7:00-7:30</td>
+					      <td ref="mon"></td>
+					      <td ref="tue"></td>
+					      <td ref="wed">
+					      </td> 
+					      <td ref="thu"></td>
+					      <td ref="fri"></td>
 					    </tr>
 					    <tr>
-					      <td>Alan</td>
-					      <td>Jellybean</td>
-					      <td>$3.76</td>
-					      <td>b</td>
+					      <td ref="7:30-8">7:30-8:00</td>
+					      <td ref="mon"></td>
+					      <td ref="tue"></td>
+					      <td ref="wed">
+					      </td>
+					      <td ref="thu"></td>
+					      <td ref="fri"></td>
 					    </tr>
 					    <tr>
-					      <td>Jonathan</td>
-					      <td>Lollipop</td>
-					      <td>$7.00</td>
-					      <td>c</td>
+					      <td ref="8-8:30">8:00-8:30</td>
+					      <td ref="mon"></td>
+					      <td ref="tue"></td>
+					      <td ref="wed"></td>
+					      <td ref="thu"></td>
+					      <td ref="fri"></td>
 					    </tr>
 					  </tbody>
 					</Table>
 
 					<div className="add">
-						<addConsultationHours/>
+						<AddConsultationHours/>
 					</div>
 
 					<br />
@@ -229,7 +247,9 @@ class HomeProfile extends Component {
 					</Collapsible>
 				</div>
 			</div>
-
+			<div className="profilePicture">
+				<MediaBox src="https://static.useresponse.com/public/2026agenda/avatars/default-avatar.svg" caption="A demo media box1" width="80%"/>
+			</div>
 		</div>
 		);
 	}

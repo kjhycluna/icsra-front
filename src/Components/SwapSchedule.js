@@ -63,5 +63,4 @@ class SwapSchedule extends Component {
     	);
     }
 }
-
 export default SwapSchedule;

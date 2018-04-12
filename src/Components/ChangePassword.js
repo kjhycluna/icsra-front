@@ -1,6 +1,6 @@
 import React, { Component } from 'react';					//default
-import {Modal,NavItem,Row,Input,Button} from 'react-materialize';	//use react-materialize.github.io								//css file of your component
-// import TopNav from './TopNav';								//default
+import {Modal,NavItem,Row,Input,Button} from 'react-materialize';	//use react-materialize.github.io
+
 
 const autoBind = require('auto-bind');
 
@@ -41,14 +41,21 @@ class ChangePassword extends Component{
 		<div>
 
 		<Modal id="modal1" actions={<div>
-									<Modal header='Confirm Changes' actions={<div><Button className="modal-action modal-close red">No</Button><Button className="modal-action modal-close blue" onClick={this.handleYes}>Yes</Button></div>} 
-									trigger={<Button className="modal-action modal-close blue">Save Changes</Button>}>
+									<Modal header='Confirm Changes' actions={
+										<div>
+											<div className="aCancel"><Button className="modal-action modal-close red">No</Button>
+											</div>
+											<div className="aSave"><Button className="modal-action modal-close blue" onClick={this.handleYes}>Yes</Button>
+											</div>
+										</div>} 
+									trigger={<div className="aSave"><Button className="modal-action modal-close">Save Changes</Button></div>}>
 									<p>Are you sure?</p>
 									</Modal>
-									<Button className="modal-action modal-close">Cancel</Button></div>} 
+									<div className="aCancel"><Button className="modal-action modal-close">Cancel</Button></div></div>} 
 		header='Change Password' trigger={<NavItem>Change Password</NavItem>}>
   			<Row>
-  				<Input value={this.state.old_password} s={12} type="password" label="Password" onChange={this.handleOldPassword}/>
+  				<Input value={this.state.old_password} s={12} type="password" label="Current Password" onChange={this.handleOldPassword}/>
+
   				<Input value={this.state.new_password} s={12} type="password" label="New Password" onChange={this.handleNewPassword}/>
   				<Input value={this.state.retyped_new_password} s={12} type="password" label="Retype New Password" onChange={this.handleRetypedNewPassword} error={this.state.retyped_new_password === "" || (this.state.retyped_new_password === this.state.new_password) ? null : "Incorrect Password"}/>
   			</Row>
