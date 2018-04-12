@@ -13,8 +13,7 @@ class CreateViewReport extends Component {
 			if(date === dateTime[i].date){
 				trows.push(
 					<tr>
-					<td>{dateTime[i].date}</td>
-					<td>{dateTime[i].time}</td>
+					<td>{dateTime[i].date} {dateTime[i].time}</td> {/*name talaga */}
 					<td className="reportsbtn">
 						<Button waves='light'><Icon center>insert_drive_file</Icon></Button>
 					</td>
@@ -42,8 +41,7 @@ class CreateViewReport extends Component {
 				<Table striped="true">
 				<thead>
 				    <tr>
-				      	<th data-field="date">Date</th>
-				      	<th data-field="time">Time</th>
+				      	<th data-field="date">Name</th>
 				      	<th data-field="dayTime">View</th>
 				      	<th data-field="inst">Download</th>
 				    </tr>

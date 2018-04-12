@@ -1,73 +1,62 @@
 import React, { Component } from 'react';					//default
-import { Table } from 'react-materialize';	//use react-materialize.github.io
+import { Table } from 'react-materialize';					//use react-materialize.github.io
 import './css/ListCourses.css';								//css file of your component
-import TopNav from './TopNav';								//default
-import {courseList} from './courseList';
+import TopNav from './TopNav';
+import axios from 'axios';
 
 class ListCourseOfferings extends Component {
-	createTBody(course){
-		var trows=[];
-		for(var i=0; i<courseList.length; i++){
-			console.log(course);
-			console.log(courseList[i]);
-			if(course === courseList[i].title){
-				trows.push(
-					<tr>
-						<td>{courseList[i].title}</td>
-						<td>{courseList[i].section}</td>
-						<td>{courseList[i].time}</td>
-						<td>{courseList[i].faculty}</td>
-					</tr>
-				);
-			}
-		}
-		return trows;
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			rows: []
+		};
 	}
-	createTable(){
-		var tables=[];
-		var courses=[];
-		for(var i=0; i<courseList.length; i++){
-			if(!courses.includes(courseList[i].title)) courses.push(courseList[i].title);
-		}
-
-		for(i=0; i<courses.length; i++){
-			tables.push(
-				<div>
-				<Table striped="true">
-					<thead>
-						<tr>
-							<th data-field="title">Title</th>
-							<th data-field="section">Section</th>
-							<th data-field="time">Day/Time</th>
-							<th data-field="instructor">Instructor</th>
-						</tr>
-					</thead>
-
-					<tbody>
-						{this.createTBody(courses[i])}
-					</tbody>
-				</Table>
-				<br></br>
-				</div>
-			);
-		}
-		return tables;
-
+	refresh(){
+		return axios.get('schedule/view-all-schedule')
+	}
+	componentDidMount(){
+		this.refresh().then((response)=>{
+			var val=response.data.data
+			this.setState({rows:val})
+		})
+		this.setState({rows:[]})
 	}
 
-	createList(){
-		return(
-			<div>{this.createTable()}</div>
-		)
-	}
 	render() {
 		return (
 			<div>
 				<TopNav/>
 					
 				<div className="feed">
-					
-					{this.createList()}
+
+					<Table striped="true">
+						<thead>
+							<tr>
+								<th data-field="courseno">Course No.</th>
+								<th data-field="title">Title</th>
+								<th data-field="section">Section</th>
+								<th data-field="time">Day/Time</th>
+								<th data-field="instructor">Instructor</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							{
+							  this.state.rows.map((item)=>{
+							    return(
+							      <tr>
+							        <td>{item.course_no}</td>
+							        <td>{item.course_no}</td>
+							        <td>{item.section}</td>
+							        <td>{item.day} {item.start_time}-{item.end_time}</td>
+							        <td> x x </td>
+							      </tr>
+							    )
+							  })
+							}
+						</tbody>
+					</Table>
 
 				</div>
 			</div>

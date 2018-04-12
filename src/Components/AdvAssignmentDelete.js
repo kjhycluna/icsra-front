@@ -4,7 +4,7 @@ import './css/AdviserAdvisee.css';
 import { assignment} from './adviser-advisee.js';
 
 var autoBind = require("auto-bind")
-const advStudents = []
+var advStudents = []
 
 class AdvAssignmentDelete extends Component{
 	constructor(props){

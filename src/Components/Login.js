@@ -34,6 +34,7 @@ class Login extends Component {
 	}
 	
 	handleSubmit(event){
+
 		// fetch("/api/login"
 		// if(res.committee_member){
 		// 	window.location = '/home/admin'
@@ -42,7 +43,7 @@ class Login extends Component {
 		// }
 
 		for(var i=0; i<userList.length; i++){
-			if(this.state.email == userList[i].email && this.state.password == userList[i].password){
+			if(this.state.email === userList[i].email && this.state.password === userList[i].password){
 				console.log(userList[i])
 				if(userList[i].committee_member){
 					window.location = '/home/admin'
@@ -51,6 +52,9 @@ class Login extends Component {
 				}
 			}
 		}
+		console.log(this.props)
+		console.log(this.state.email)
+		console.log(this.state.password)
 	}
 
 	render() {

@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import {Table} from 'react-materialize';
+import {Table, Row, Input} from 'react-materialize';
 import './css/AdviserAdvisee.css';
 import TopNav from './TopNav';
-import {assignment} from './adviser-advisee.js'; //the adviser-advisee data (array of objects with adviser and advisee[] attributes)
+import {adv} from './adviser-advisee.js'; //the adviser-advisee data (array of objects with adviser and advisee[] attributes)
 import AdvAssignmentCreate from './AdvAssignmentCreate';
 import AdvAssignmentUpdate from './AdvAssignmentUpdate';
 import AdvAssignmentDelete from './AdvAssignmentDelete';
 
 // const autoBind = require('auto-bind');
 
-
+var adv1 = [];
 
 class AdviserAdvisee extends Component {
 	constructor(props){
@@ -19,41 +19,66 @@ class AdviserAdvisee extends Component {
 			studno: "20XX-XXXXX",
 			email: "student@up.edu.ph",
 			units: 0,
-			adviser: "",
+			adviser: "nul",
 			prev_adv: []
 		}
 		// autoBind(this);
+		this.changeAdviser = this.changeAdviser.bind(this);
 	}
 
-	clickStudent(student, adviser, e){ //handler for when student is clicked, the state will change values, thus changing the sidebar values
+	clickStudent(student, e){ //handler for when student is clicked, the state will change values, thus changing the sidebar values
 		this.setState({advisee: student});
-		this.setState({adviser: adviser});
-	}
-	previousAdvisers(){
 		
+	}
+	changeAdviser(e){
+		this.setState({adviser: e.target.value});
 	}
 
 	createTable(){ //function that creates tables of adviser - # of advisees - advisees[], if the adviser has no current advisees, he/she is not included
 		var table = [];
-		for(var i=0; i<assignment.length; i++){
-			// if(assignment[i].advisees.length > 0){
-				table.push(<tr> 
-					<td className="advisers">{assignment[i].adviser}</td>
-					<td className="advisers">{assignment[i].advisees.length}</td>
-					<td className="tdStyle">{this.createAdvisees(assignment[i])}</td>
-					</tr>);
-			// }
+		var regAdv = [];
+		var spAdv = [];
+		var thesisAdv = [];
+		for(var i=0; i<adv.length; i++){
+			if(adv[i].registration_adviser === this.state.adviser) regAdv.push(adv[i].fname + ' ' + adv[i].lname);
+			if(adv[i].sp_adviser === this.state.adviser) spAdv.push(adv[i].fname + ' ' + adv[i].lname);
+			if(adv[i].thesis_adviser === this.state.adviser) thesisAdv.push(adv[i].fname + ' ' + adv[i].lname);
 		}
+		
+		table.push(<tr>
+			<td className="advisers">{regAdv.length + spAdv.length + thesisAdv.length}</td>
+			<td className="tdStyle">{this.createAdvisees(regAdv)}</td>
+			<td className="tdStyle">{this.createAdvisees(spAdv)}</td>
+			<td className="tdStyle">{this.createAdvisees(thesisAdv)}</td>
+			</tr>);
 		return table;
 	}
 
-	createAdvisees(adviser){ //creates the list of advisees given the adviser (used for createTable() function)
-		var adv = [];
-		for(var i=0; i<adviser.advisees.length; i++){
-			adv.push(<a href="#" onClick={this.clickStudent.bind(this, adviser.advisees[i], adviser.adviser)}>{adviser.advisees[i]}</a>)
-			if(i !== adviser.advisees.length -1) {adv.push('\n')}
+	createAdvisees(advisees){ //creates the list of advisees given the adviser (used for createTable() function)
+		var advtbl = [];
+		if(advisees.length > 0){
+			for(var i=0; i<advisees.length; i++){
+				advtbl.push(<a href="#" onClick={this.clickStudent.bind(this, advisees[i])}>{advisees[i]}</a>)
+				if(i !== advisees.length -1) {advtbl.push('\n')}
+			}
 		}
-		return adv;
+		return advtbl;
+	}
+
+	createOptions(){
+		for(var i=0; i<adv.length; i++){
+			if(!adv1.includes(adv[i].registration_adviser) && adv[i].registration_adviser !== '') adv1.push(adv[i].registration_adviser);
+			if(!adv1.includes(adv[i].sp_adviser) && adv[i].sp_adviser !== '') adv1.push(adv[i].sp_adviser);
+			if(!adv1.includes(adv[i].thesis_adviser) && adv[i].thesis_adviser !== '') adv1.push(adv[i].thesis_adviser);
+		}
+
+		var options = [];
+		for (i=0; i<adv1.length; i++){
+			options.push(
+				<option value={adv1[i]}> {adv1[i]} </option>
+			)
+		}
+		return options;
 	}
 
 	render() {
@@ -63,14 +88,20 @@ class AdviserAdvisee extends Component {
 
         	{/*middle table*/}
             <div className="listaa">
+            	<Row>
+	  				<Input s={12} type='select' label="Advisers" defaultValue='0' onChange={this.changeAdviser}>
+						{this.createOptions()}
+	  				</Input>
+	  			</Row>
             	<Table>
             		<tbody>
             			<tr>
-            				<td className="classification">Adviser</td>
             				<td className="classification">No. of Advisees</td>
-            				<td className="classification">Advisees</td>
+            				<td className="classification">Registration Advisees</td>
+            				<td className="classification">SP Advisees</td>
+            				<td className="classification">Thesis Advisees</td>
             			</tr>
-            			{this.createTable()} 
+            			{this.createTable()}
             		</tbody>
             	</Table>
             </div>
@@ -101,7 +132,7 @@ class AdviserAdvisee extends Component {
             			</tr>
             			<tr>
             				<td className="tdStyle"> Previous Advisers </td>
-            				<td> {this.previousAdvisers()} </td>
+            				<td>  </td>
             			</tr>
             		</tbody>
             	</Table>

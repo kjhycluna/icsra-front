@@ -20,7 +20,7 @@ class SendSwapRequest extends Component {
 				  <Col s={3} className='grid-example'>Room</Col>
 				</Row>
 	        	<div>
-					<Table striped="true">
+					<Table>
 					  <thead>
 					    <tr>
 					      <th data-field="subj">Subject</th>

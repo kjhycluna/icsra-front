@@ -5,11 +5,25 @@ import TopNav from './TopNav';								//default
 import ConfirmUpdate from './ConfirmUpdate';
 
 const autoBind = require('auto-bind');
-const courses =[
-	{id: 1, course_no:"CMSC 128",section:"A",time:"TTh 8:00-9:00", room:"ICSMH", fic: "", status:"TBA",students:64},
-	{id: 2, course_no:"CMSC 132",section:"ST1L",time:"T 13:00-16:00", room:"ICS PC6", fic: "", status:"TBA",students:16}
+
+var courses = [
+	{course_no: 2, title: "Introduction to the Internet", description: "Tools and services of the Internet, Internet protocols, search engines, file transfer protocol (FTP), email, listservers and HTML programming"},
+	// {course_no: 11, title: "Introduction to Computer Science", description: "Introduction to the major areas of computer science; software systems and methodology; computer theory; computer organization and architecture."},
+	{course_no: 128, title: "Introduction to Software Engineering", description: "Principles and methods for the design, implementation, validation, evaluation and maintenance of software systems."},
+	{course_no: 21, title: "Fundamentals of Programming", description: "Expansion and development of materials introduced in CMSC 11; processing files and linked-lists; programming in the C language; recursion; systematic program development; top-down design and program verification."}
 ]
-const rooms = ["ICSLH3", "ICSLH4", "ICS PC6", "ICS PC4", "ICSMH"]
+
+const schedules = [
+	{section: "a", course_no: 128, room: "ICSMH", day: "WF", start_time: "7:00", end_time: "8:00", current_no_of_students: 105, max_no_of_students: 128, status: "Available"},
+	{section: "a-2l", course_no: 128, room: "ICS PC4", day: "T", start_time: "4:00", end_time: "7:00", current_no_of_students: 17, max_no_of_students: 20, status: "Available"},
+	{section: "a-6l", course_no: 128, room: "ICS PC5", day: "W", start_time: "10:00", end_time: "1:00", current_no_of_students: 15, max_no_of_students: 20, status: "Available"},
+	{section: "b", course_no: 2, room: "ICSMH", day: "TTH", start_time: "3:00", end_time: "4:00", current_no_of_students: 100, max_no_of_students: 100, status: "Available"},
+	{section: "b-1l", course_no: 2, room: "ICS PC6", day: "F", start_time: "7:00", end_time: "10:00", current_no_of_students: 10, max_no_of_students: 15, status: "Available"},
+	{section: "b-4l", course_no: 2, room: "ICS PC8", day: "TH", start_time: "1:00", end_time: "4:00", current_no_of_students: 19, max_no_of_students: 20, status: "Available"},
+	{section: "b-9l", course_no: 2, room: "ICS PC9", day: "TH", start_time: "4:00", end_time: "7:00", current_no_of_students: 2, max_no_of_students: 20, status: "Dissolved"},
+]
+
+const rooms = ["ICSMH", "ICSLH3", "ICSLH4", "ICS PC1", "ICS PC2", "ICS PC3"];
 const dayAndTimeSet = ["WF 7:00-9:00", "TTh 13:00-14:00", "M 13:00-16:00", "TTh 8:00-9:00", "T 13:00-16:00"]
 const fic = ["Me", "You", ""]
 
@@ -171,7 +185,11 @@ class Delete extends Component{
 	render(){
 		return(
 			<div>
-				<Modal header='Confirm Delete' actions={<div><Button className="modal-action modal-close red">No</Button><Button className="modal-action modal-close blue" onClick={this.handleYes}>Yes</Button></div>} trigger={<Button waves='light'><Icon center>delete</Icon></Button>}>
+				<Modal header='Confirm Delete' actions={<div>
+					<div className="aSave"><Button className="modal-action modal-close blue" onClick={this.handleYes}>Yes</Button></div>
+					<div className="aCancel"><Button className="modal-action modal-close red">No</Button></div>
+					</div>
+				} trigger={<Button waves='light'><Icon center>delete</Icon></Button>}>
 				Are you sure?
 				</Modal>
 			</div>
@@ -180,6 +198,30 @@ class Delete extends Component{
 }
 
 class ListSchedCourse extends Component {
+	constructor(){
+		super()
+		autoBind(this)
+	}
+
+	listSections(course){
+		var sections = [];
+		for(var i = 0; i < schedules.length; ++i){
+			if(course.course_no === schedules[i].course_no){
+				sections.push(
+					<tr key={schedules[i].section}>
+					<td>{schedules[i].section.toUpperCase()}</td>
+					<td>{schedules[i].day + " " + schedules[i].start_time + " " + schedules[i].end_time}</td>
+					<td>{schedules[i].room}</td>
+					<td>{schedules[i].current_no_of_students}</td>
+					<td>{schedules[i].status}</td>
+					<td><Edit item={schedules[i]} /></td>
+					<td><Delete item={schedules[i]} /></td>
+					</tr>
+				);
+			}
+		}
+		return sections;
+	}
 	render() {
 		return (
 			<div>
@@ -189,36 +231,33 @@ class ListSchedCourse extends Component {
 					
 					<br />
 					<div>
-						<Table>
-	  						<thead>
-	    						<tr>
-						      		<th data-field="id">Subject</th>
-						      		<th data-field="name">Section</th>
-						      		<th data-field="name">Day & Time</th>
-						      		<th data-field="name">Room</th>
-						      		<th data-field="name">No. of Students</th>
-						      		<th data-field="price">Status</th>
-						      		<th data-field="edit">Edit</th>
-						      		<th data-field="delete">Delete</th>
-						    	</tr>
-						  	</thead>
-						  	<tbody>
-						  	{
-						  		courses.map((item,index)=>{
-						  			return(<tr key={index}>
-						  				<td>{item.course_no}</td>
-						  				<td>{item.section}</td>
-						  				<td>{item.time}</td>
-						  				<td>{item.room}</td>
-						  				<td>{item.students}</td>
-						  				<td>{item.status}</td>
-						  				<td><Edit item={item}/></td>
-						  				<td><Delete item={item}/></td>
-						  			</tr>)
-						  		})
-						  	}
-							</tbody>
-						</Table>
+						{
+							courses.map((course, index) => {
+								return(
+									<div>
+										<h1> CMSC {course.course_no} </h1>
+										<Table className="courseTables">
+					  						<thead>
+					    						<tr>
+										      		<th data-field="name">Section</th>
+										      		<th data-field="name">Day & Time</th>
+										      		<th data-field="name">Room</th>
+										      		<th data-field="name">No. of Students</th>
+										      		<th data-field="price">Status</th>
+										      		<th data-field="edit">Edit</th>
+										      		<th data-field="delete">Delete</th>
+										    	</tr>
+										  	</thead>
+										  	
+										  	<tbody>
+											  	{this.listSections(course)}
+											</tbody>
+										</Table>
+									</div>
+								)
+							})
+						}
+						
 					</div>
 
 				</div>

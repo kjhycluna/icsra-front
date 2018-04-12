@@ -25,7 +25,7 @@ class LogoutPrompt extends Component{
 }
 
 
-class TopNav extends Component {
+class TopNavProf extends Component {
 	render() {
 	    return (
 		<div>
@@ -53,4 +53,4 @@ class TopNav extends Component {
 	}
 }
 
-export default TopNav;
+export default TopNavProf;

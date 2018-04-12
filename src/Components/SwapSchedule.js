@@ -3,9 +3,27 @@ import {Table} from 'react-materialize';
 import TopNav from './TopNav';
 import './css/SwapSchedule.css';
 import SendSwapRequest from './SendSwapRequest';
+import axios from 'axios';
 
 class SwapSchedule extends Component {
+	constructor(props){
+		super(props)
 
+		this.state={
+			schedPerFIC:[]
+		};
+	}
+
+	getSched(){
+		return axios.get('../schedule/view-all-schedule')
+	}
+	componentWillMount(){
+	  this.getSched().then((response)=>{
+	    var value=response.data.data
+	    this.setState({schedPerFIC:value})
+	  })
+	  this.setState({schedPerFIC:[]})
+	}
 
 	render() {
 	    return (
@@ -16,46 +34,30 @@ class SwapSchedule extends Component {
             		SWAP SCHEDULE
             	</div>
             	<div className="swapScheduleList">
-            		<Table striped="true">
-					  <thead>
-					    <tr>
-					      <th data-field="course">Course</th>
-					      <th data-field="section">Section</th>
-					      <th data-field="time">Day and Time</th>
-					      <th data-field="room">Room</th>
-					      <th data-field="swap"></th>
-					    </tr>
-					  </thead>
-
-					  <tbody>
-					    <tr>
-					      <td>Course A</td>
-					      <td>Section 1A</td>
-					      <td>date/time</td>
-					      <td>Room 1</td>
-					      <td>
-					      	<SendSwapRequest/>
-					      </td>
-					    </tr>
-					    <tr>
-					      <td>Course A</td>
-					      <td>Section 2A</td>
-					      <td>date/time</td>
-					      <td>Room 2</td>
-					      <td>
-					      	<SendSwapRequest/>
-					      </td>
-					    </tr>
-					    <tr>
-					      <td>Course A</td>
-					      <td>Section 3A</td>
-					      <td>date/time</td>
-					      <td>Room 3</td>
-					      <td>
-					      	<SendSwapRequest/>
-					      </td>
-					    </tr>
-					  </tbody>
+            		<Table>
+						<thead>
+    						<tr>
+					      		<th data-field="subject">Subject</th>
+					      		<th data-field="section">Section</th>
+					      		<th data-field="day&time">Day & Time</th>
+					      		<th data-field="room">Room</th>
+					      		<th data-field="swap">Swap</th>
+					    	</tr>
+					  	</thead>
+					  	<tbody>
+					  	{
+					  		this.state.schedPerFIC.map((item,index)=>{
+					  			return(<tr key={index}>
+					  				
+					  				<td>{item.course_no}</td>
+					  				<td>{item.section}</td>
+					  				<td>{item.day}  {item.start_time}-{item.end_time}</td>
+					  				<td>{item.room}</td>
+					  				<td><SendSwapRequest /></td>
+					  			</tr>)
+					  		})
+					  	}
+						</tbody>
 					</Table>
             	</div>
             </div>

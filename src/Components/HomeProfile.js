@@ -3,9 +3,11 @@ import {Dropdown, NavItem, Icon, Button, Table, MediaBox, CollapsibleItem, Colla
 import {Parallax} from 'react-parallax';
 import './css/HomeProfile.css';
 import TopNav from './TopNav';
+import TopNavProf from './TopNavProf';
 import ChangePassword from './ChangePassword';
 import AddConsultationHours from './AddConsultationHours';
 import bg from './images/bg.jpg';
+import axios from 'axios';
 
 var autoBind = require('auto-bind');
 const schedule = [
@@ -19,27 +21,96 @@ class HomeProfile extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			firstName:"Reginald",
-			lastName:"Recario",
-			empno:"000000000",
-			rank:"Jellybean Lollipop",
-			status:"Single",
-			teachingLoad:schedule.length*3,
-			studyLoad:"0"
+			empno:1,
+			advisees: [],
+			faculty: {},
+			committee: true 
 		}
 		autoBind(this);
+	}
+	refresh(){
+		return axios.post(
+			'advisee/view-advisee-by-faculty',
+			{
+				empno: this.state.empno
+			},
+			(error, response, body) => {
+					console.log(body);
+			})
+	}
+	refresh2(){
+		return axios.post(
+			'faculty/view-faculty',
+			{
+				empno: this.state.empno
+			},
+			(error, response, body) => {
+					console.log(body);
+			})
+	}
+	componentDidMount(){
+		this.refresh().then((response)=>{
+			var val=response.data.data
+			this.setState({advisees:val})
+		})
+		this.setState({advisees:[]})
+		
+		this.refresh2().then((response)=>{
+			var val2=response.data.data
+			this.setState({faculty:val2})
+		})
+		this.setState({faculty:{}})
+
+	}
+	createAdvisees(index){
+		
+		return(
+			<Table striped="true">
+	      <thead>
+	        <tr>
+	          <th data-field="name">Name</th>
+	          <th data-field="studentNo">Student Number</th>
+	          <th data-field="unitsEarned">Units Earned</th>
+	        </tr>
+	      </thead>
+
+	      <tbody>
+	        {this.fillAdvisees(index)}
+	        
+	      </tbody>
+	    </Table>)
+	}
+	fillAdvisees(index){
+			var table = []
+			if(this.state.advisees[index]!==undefined){
+				let adv = this.state.advisees[index]
+				for(var i=0; i<adv.length; i++){
+					table.push(<tr>
+		          <td>{adv[i].fname} {adv[i].lname}</td>
+		          <td>{adv[i].studno}</td>
+		          <td>{adv[i].unitsearned}</td>
+		        </tr>)
+				}
+			}
+			return table
+	}
+	topNav(){
+		if(this.state.committee){
+			return(<TopNav/>)
+		}
+		else return(<TopNavProf/>)
 	}
 
 	render() {
 	    return (
 		<div>
-            <TopNav/>
-
+            {this.topNav()}
+            
             <div >
             	<Parallax bgImage={bg} strength={200}>
             		<div style={{ height: '400px', width:'100%'}}>
             			<div className="name">
-            				FIRST M. LASTNAME 
+            				{this.state.faculty.fname} {this.state.faculty.lname}  
             			</div>
             		</div>
             	</Parallax>
@@ -62,19 +133,19 @@ class HomeProfile extends Component {
 						    </tr>
 						    <tr>
 						      <td>Rank:</td>
-						      <td>{this.state.rank}</td>
+						      <td>{this.state.faculty.rank}</td>
 						    </tr>
 						    <tr>
 						      <td>Status:</td>
-						      <td>{this.state.status}</td>
+						      <td>{this.state.faculty.status}</td>
 						    </tr>
 						    <tr>
 						      <td>Teaching Load:</td>
-						      <td>{this.state.teachingLoad} unit/s</td>
+						      <td>{this.state.faculty.teaching_load} unit/s</td>
 						    </tr>
 						    <tr>
 						      <td>Study Load:</td>
-						      <td>{this.state.studyLoad} unit/s</td>
+						      <td>{this.state.faculty.study_load} unit/s</td>
 						    </tr>
 						  </tbody>
 						</Table>
@@ -115,103 +186,16 @@ class HomeProfile extends Component {
 					ADVISEES
 					<Collapsible accordion>
 					  <CollapsibleItem header='SP Advisees' icon='person'>
-					    <Table striped="true">
-					      <thead>
-					        <tr>
-					          <th data-field="name">Name</th>
-					          <th data-field="studentNo">Student Number</th>
-					          <th data-field="status">Status</th>
-					          <th data-field="unitsEarned">Units Earned</th>
-					        </tr>
-					      </thead>
-
-					      <tbody>
-					        <tr>
-					          <td>Alvin A Bzxcvbnm</td>
-					          <td>20XX-XXXXX</td>
-					          <td>Pending</td>
-					          <td>119</td>
-					        </tr>
-					        <tr>
-					          <td>Alan C Dqwertyuiop</td>
-					          <td>20XX-XXXXX</td>
-					          <td>asdfghjkl</td>
-					          <td>119</td>
-					        </tr>
-					        <tr>
-					          <td>Jonathan E Fokmjnuhj</td>
-					          <td>20XX-XXXXX</td>
-					          <td>Pending</td>
-					          <td>119</td>
-					        </tr>
-					      </tbody>
-					    </Table>
+					    {this.createAdvisees(2)}
 					  </CollapsibleItem>
 					  <CollapsibleItem header='Thesis Advisees' icon='person'>
-					    <Table striped="true">
-					      <thead>
-					        <tr>
-					          <th data-field="name">Name</th>
-					          <th data-field="studentNo">Student Number</th>
-					          <th data-field="status">Status</th>
-					          <th data-field="unitsEarned">Units Earned</th>
-					        </tr>
-					      </thead>
-
-					      <tbody>
-					        <tr>
-					          <td>Alvin A Bzxcvbnm</td>
-					          <td>20XX-XXXXX</td>
-					          <td>Pending</td>
-					          <td>119</td>
-					        </tr>
-					        <tr>
-					          <td>Alan C Dqwertyuiop</td>
-					          <td>20XX-XXXXX</td>
-					          <td>asdfghjkl</td>
-					          <td>119</td>
-					        </tr>
-					        <tr>
-					          <td>Jonathan E Fokmjnuhj</td>
-					          <td>20XX-XXXXX</td>
-					          <td>Pending</td>
-					          <td>119</td>
-					        </tr>
-					      </tbody>
-					    </Table>
+					    {this.createAdvisees(3)}
 					  </CollapsibleItem>
 					  <CollapsibleItem header='Registration Advisees' icon='people'>
-					    <Table striped="true">
-					      <thead>
-					        <tr>
-					          <th data-field="name">Name</th>
-					          <th data-field="studentNo">Student Number</th>
-					          <th data-field="status">Status</th>
-					          <th data-field="unitsEarned">Units Earned</th>
-					        </tr>
-					      </thead>
-
-					      <tbody>
-					        <tr>
-					          <td>Alvin A Bzxcvbnm</td>
-					          <td>20XX-XXXXX</td>
-					          <td>Pending</td>
-					          <td>119</td>
-					        </tr>
-					        <tr>
-					          <td>Alan C Dqwertyuiop</td>
-					          <td>20XX-XXXXX</td>
-					          <td>asdfghjkl</td>
-					          <td>119</td>
-					        </tr>
-					        <tr>
-					          <td>Jonathan E Fokmjnuhj</td>
-					          <td>20XX-XXXXX</td>
-					          <td>Pending</td>
-					          <td>119</td>
-					        </tr>
-					      </tbody>
-					    </Table>
+					    {this.createAdvisees(0)}
+					  </CollapsibleItem>
+					  <CollapsibleItem header='Practicum Advisees' icon='people'>
+					    {this.createAdvisees(1)}
 					  </CollapsibleItem>
 					</Collapsible>
 				</div>

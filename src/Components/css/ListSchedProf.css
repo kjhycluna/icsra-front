@@ -8,20 +8,9 @@
 	/*background-color: #DDEDFF;*/
 }
 
-.profName {
-	position: absolute;
-	float: left;
-	left: -5px;
-	text-align: left;
-	letter-spacing: 2px;
-	font-size: 28px;
-	font-weight: bold;
-}
-
 .teachLoad {
 	position: absolute;
 	float: right;
-	right: -5px;
-	text-align: left;
-	font-size: 28px;
+	right: 10px;
+	text-align: right;
 }
